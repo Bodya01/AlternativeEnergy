@@ -1,5 +1,4 @@
 using AlternativeEnergy.API.Controllers.Base;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlternativeEnergy.API.Controllers

@@ -20,24 +20,15 @@ namespace AlternativeEnergy.API.Controllers
         }
 
         [HttpPost("sign-in")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model, CancellationToken cancellationToken)
-        {
-            var r = await _identityService.LoginAsync(model, cancellationToken);
-            return Ok(r);
-        }
+        public async Task<IActionResult> Login([FromBody] LoginModel model, CancellationToken cancellationToken) =>
+            Ok(await _identityService.LoginAsync(model, cancellationToken));
 
         [HttpPost("sign-up")]
-        public async Task<IActionResult> Register([FromBody] RegistrationModel model, CancellationToken cancellationToken)
-        {
-            var r = await _identityService.RegisterAsync(model, cancellationToken);
-            return Ok(r);
-        }
+        public async Task<IActionResult> Register([FromBody] RegistrationModel model, CancellationToken cancellationToken) =>
+            Ok(await _identityService.RegisterAsync(model, cancellationToken));
 
         [HttpPost("refresh")]
-        public async Task<IActionResult> Refresh([FromBody] RefreshTokenDto model, CancellationToken cancellationToken)
-        {
-            var r = await _identityService.RefreshAsync(model, cancellationToken);
-            return Ok(r);
-        }
+        public async Task<IActionResult> Refresh([FromBody] RefreshTokenDto model, CancellationToken cancellationToken) =>
+            Ok(await _identityService.RefreshAsync(model, cancellationToken));
     }
 }
