@@ -1,11 +1,12 @@
-﻿using System.Security.Claims;
+﻿using AlternativeEnergy.Infrastructure.Identity.Models;
+using AlternativeEnergy.Infrastructure.Models.Dtos;
 
 namespace AlternativeEnergy.Application.Services
 {
     public interface IIdentityService
     {
-        string GenerateToken(Guid userId, string email);
-        ClaimsPrincipal ValidateToken(string token);
-        Task<(bool isSuccessful, AuthenticationResultDto authResult)> LoginAsync(LoginDto loginDto)
+        Task<AuthenticationResult> LoginAsync(LoginModel model, CancellationToken cancellationToken = default);
+        Task<AuthenticationResult> RegisterAsync(RegistrationModel model, CancellationToken cancellationToken = default);
+        Task<AuthenticationResult> RefreshAsync(RefreshTokenDto model, CancellationToken cancellationToken = default);
     }
 }

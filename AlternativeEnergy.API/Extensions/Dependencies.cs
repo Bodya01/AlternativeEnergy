@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using AlternativeEnergy.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -8,6 +9,8 @@ namespace AlternativeEnergy.API.Extensions
     {
         public static IServiceCollection ConfigureAuthentication(this IServiceCollection services, ApplicationConfigs configuration)
         {
+            services.AddSingleton(GetValidationParameters(configuration));
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

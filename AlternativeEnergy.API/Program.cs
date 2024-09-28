@@ -1,5 +1,3 @@
-using AlternativeEnergy.API;
-
 namespace AlternativeEnergy.API
 {
     public class Program

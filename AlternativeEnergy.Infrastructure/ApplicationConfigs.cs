@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-namespace AlternativeEnergy.API
+namespace AlternativeEnergy.Infrastructure
 {
     public sealed class ApplicationConfigs
     {
@@ -8,6 +8,7 @@ namespace AlternativeEnergy.API
         public string AllowedHosts { get; set; }
         public JwtSettingsConfiguration JwtSettings { get; set; }
         public DbSettingsConfiguration DbSettings { get; set; }
+        public Connections ConnectionStrings { get; set; }
 
         public class LoggingConfiguration
         {
@@ -29,6 +30,11 @@ namespace AlternativeEnergy.API
         public class DbSettingsConfiguration
         {
             public bool UseEFCore { get; set; }
+        }
+
+        public class Connections
+        {
+            public string AlternativeEnergy { get; set; }
         }
     }
 }
