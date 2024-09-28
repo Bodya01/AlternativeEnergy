@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace AlternativeEnergy.API.Middleware
+namespace Bootstrapper.Middleware
 {
     public class ExceptionHandlingMiddleware
     {

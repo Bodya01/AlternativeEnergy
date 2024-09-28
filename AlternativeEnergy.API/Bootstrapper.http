@@ -1,6 +1,6 @@
 @AlternativeEnergy.API_HostAddress = http://localhost:5220
 
-GET {{AlternativeEnergy.API_HostAddress}}/weatherforecast/
+GET {{AlternativeEnergy.API_HostAddress}}/api/health-check/ping
 Accept: application/json
 
 ###

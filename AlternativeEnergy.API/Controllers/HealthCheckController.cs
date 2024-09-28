@@ -1,13 +1,12 @@
-using AlternativeEnergy.API.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AlternativeEnergy.API.Controllers
+namespace Bootstrapper.Controllers
 {
     [ApiController]
     [Route("api/health-check")]
-    public class HealthCheckController : AlternativeEnergyControllerBase
+    public class HealthCheckController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("ping")]
         public IActionResult Ping()
         {
             return Ok("Pong!");

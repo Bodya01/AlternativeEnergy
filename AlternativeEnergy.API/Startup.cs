@@ -1,10 +1,9 @@
-﻿using AlternativeEnergy.API.Extensions;
-using AlternativeEnergy.API.Middleware;
+﻿using AlternativeEnergy.Identity.API.Extensions;
 using AlternativeEnergy.Infrastructure;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.OpenApi.Models;
+using Bootstrapper.Extensions;
+using Bootstrapper.Middleware;
 
-namespace AlternativeEnergy.API
+namespace Bootstrapper
 {
     public class Startup
     {
@@ -18,48 +17,28 @@ namespace AlternativeEnergy.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwagger();
+
             services.AddLogging(config =>
             {
                 config.AddConsole();
                 config.AddDebug();
             });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AlternativeEnergy", Version = "v1" });
-
-                var securityScheme = new OpenApiSecurityScheme
-                {
-                    Name = "JWT Authentication",
-                    Description = "Enter JWT Bearer token **_only_**",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
-                    BearerFormat = "JWT",
-                    Reference = new OpenApiReference
-                    {
-                        Id = JwtBearerDefaults.AuthenticationScheme,
-                        Type = ReferenceType.SecurityScheme,
-                    },
-                };
-
-                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    { securityScheme, Array.Empty<string>() },
-                });
-            });
-
-            services.AddControllers();
-            services.AddMvc();
-
-            services.AddHttpContextAccessor();
-
             var appConfigs = new ApplicationConfigs();
             Configuration.GetSection("ApplicationConfigurations").Bind(appConfigs);
             services.AddSingleton(appConfigs);
 
-            services.RegisterIdentityModule(appConfigs);
+            /*-----module registration-----*/
+            services.AddIdentityModuleDependencies(appConfigs);
+
+            services.AddControllers()
+                .UseIdentityApi();
+            /*-----------------------------*/
+
+            services.AddMvc();
+
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

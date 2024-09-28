@@ -1,16 +1,15 @@
-﻿using AlternativeEnergy.API.Controllers.Base;
-using AlternativeEnergy.Identity.Application.Services;
+﻿using AlternativeEnergy.Identity.Application.Services;
 using AlternativeEnergy.Identity.Infrastructure.Dtos;
 using AlternativeEnergy.Identity.Infrastructure.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AlternativeEnergy.API.Controllers
+namespace AlternativeEnergy.Identity.API.Controllers
 {
     [ApiController]
     [AllowAnonymous]
     [Route("api/identity")]
-    public sealed class IdentityController : AlternativeEnergyControllerBase
+    public sealed class IdentityController : ControllerBase
     {
         private readonly IIdentityService _identityService;
 

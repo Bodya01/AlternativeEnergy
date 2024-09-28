@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.API", "AlternativeEnergy.API\AlternativeEnergy.API.csproj", "{627F7112-A94E-4C78-85D5-85F47B5D09A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrapper", "AlternativeEnergy.API\Bootstrapper.csproj", "{627F7112-A94E-4C78-85D5-85F47B5D09A8}"
 	ProjectSection(ProjectDependencies) = postProject
-		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA} = {5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}
+		{20C43146-6DF8-425A-A3C0-5F009718CA31} = {20C43146-6DF8-425A-A3C0-5F009718CA31}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Domain", "AlternativeEnergy.Domain\AlternativeEnergy.Domain.csproj", "{B868136F-9C2B-490D-8D5A-17835B45D011}"
@@ -24,6 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Identity.API", "AlternativeEnergy.Identity.API\AlternativeEnergy.Identity.API.csproj", "{20C43146-6DF8-425A-A3C0-5F009718CA31}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA} = {5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{C1EAA754-413D-4AE4-B157-FA43311FD8CB}"
 EndProject
