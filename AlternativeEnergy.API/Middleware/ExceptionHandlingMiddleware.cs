@@ -23,7 +23,7 @@ namespace Bootstrapper.Middleware
             {
                 _logger.LogError(ex, "An unhandled exception occurred during request processing.");
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                await context.Response.WriteAsJsonAsync(new { error = "Internal Server Error" });
+                await context.Response.WriteAsJsonAsync(new { error = ex.Message });
             }
         }
     }
