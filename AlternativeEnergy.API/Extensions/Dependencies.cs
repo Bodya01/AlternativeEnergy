@@ -1,4 +1,5 @@
-﻿using AlternativeEnergy.Infrastructure;
+﻿using AlternativeEnergy.Identity.Application;
+using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -7,36 +8,10 @@ namespace AlternativeEnergy.API.Extensions
 {
     internal static class Dependencies
     {
-        public static IServiceCollection ConfigureAuthentication(this IServiceCollection services, ApplicationConfigs configuration)
+        public static IServiceCollection RegisterIdentityModule(this IServiceCollection services, ApplicationConfigs configs)
         {
-            services.AddSingleton(GetValidationParameters(configuration));
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.SaveToken = true;
-                options.TokenValidationParameters = GetValidationParameters(configuration);
-            });
-
+            services.RegisterIdentityDependencies(configs);
             return services;
-        }
-
-        private static TokenValidationParameters GetValidationParameters(ApplicationConfigs configuration)
-        {
-            return new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration.JwtSettings.SecretKey)),
-                ValidateIssuer = false,
-                ValidateAudience = false,
-                RequireExpirationTime = false,
-                ValidateLifetime = false,
-            };
         }
     }
 }

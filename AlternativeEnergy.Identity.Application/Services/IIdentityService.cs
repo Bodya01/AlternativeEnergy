@@ -1,7 +1,7 @@
-﻿using AlternativeEnergy.Infrastructure.Identity.Models;
-using AlternativeEnergy.Infrastructure.Models.Dtos;
+﻿using AlternativeEnergy.Identity.Infrastructure.Dtos;
+using AlternativeEnergy.Identity.Infrastructure.Models;
 
-namespace AlternativeEnergy.Application.Services
+namespace AlternativeEnergy.Identity.Application.Services
 {
     public interface IIdentityService
     {

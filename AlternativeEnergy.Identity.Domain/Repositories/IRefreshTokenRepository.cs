@@ -1,6 +1,6 @@
-﻿using AlternativeEnergy.Infrastructure.Identity;
+﻿using AlternativeEnergy.Identity.Domain.Entities;
 
-namespace AlternativeEnergy.Infrastructure.EFCore.Repositories
+namespace AlternativeEnergy.Identity.Domain.Repositories
 {
     public interface IRefreshTokenRepository
     {

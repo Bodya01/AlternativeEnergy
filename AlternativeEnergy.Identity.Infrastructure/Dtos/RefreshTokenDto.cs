@@ -1,4 +1,4 @@
-﻿namespace AlternativeEnergy.Infrastructure.Models.Dtos
+﻿namespace AlternativeEnergy.Identity.Infrastructure.Dtos
 {
     public sealed record RefreshTokenDto(string Token, string RefreshToken);
 }

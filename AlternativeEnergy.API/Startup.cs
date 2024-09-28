@@ -2,8 +2,6 @@
 using AlternativeEnergy.API.Middleware;
 using AlternativeEnergy.Application;
 using AlternativeEnergy.Infrastructure;
-using AlternativeEnergy.Infrastructure.EFCore.Context;
-using AlternativeEnergy.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -64,16 +62,7 @@ namespace AlternativeEnergy.API
             Configuration.GetSection("ApplicationConfigurations").Bind(appConfigs);
             services.AddSingleton(appConfigs);
 
-            services.ConfigureAuthentication(appConfigs);
-
-            services.AddDbContext<AlternativeEnergyContext>(options =>
-                options.UseSqlServer(appConfigs.ConnectionStrings.AlternativeEnergy));
-            services.AddIdentity<AppUser, IdentityRole<Guid>>()
-                .AddEntityFrameworkStores<AlternativeEnergyContext>()
-                .AddDefaultTokenProviders();
-
-            services.RegisterRepositories()
-                .RegisterApplicationServices();
+            services.RegisterIdentityModule(appConfigs);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

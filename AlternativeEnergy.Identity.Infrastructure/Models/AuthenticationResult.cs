@@ -1,6 +1,8 @@
 ﻿#nullable disable
 
-namespace AlternativeEnergy.Infrastructure.Identity.Models
+using AlternativeEnergy.Identity.Domain.Entities;
+
+namespace AlternativeEnergy.Identity.Infrastructure.Models
 {
     public sealed class AuthenticationResult
     {

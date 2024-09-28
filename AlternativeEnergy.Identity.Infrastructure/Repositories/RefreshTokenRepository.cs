@@ -1,14 +1,15 @@
-﻿using AlternativeEnergy.Infrastructure.EFCore.Context;
-using AlternativeEnergy.Infrastructure.Identity;
+﻿using AlternativeEnergy.Identity.Domain.Entities;
+using AlternativeEnergy.Identity.Domain.Repositories;
+using AlternativeEnergy.Identity.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace AlternativeEnergy.Infrastructure.EFCore.Repositories
+namespace AlternativeEnergy.Identity.Infrastructure.Repositories
 {
     internal sealed class RefreshTokenRepository : IRefreshTokenRepository
     {
-        private readonly AlternativeEnergyContext _context;
+        private readonly IdentityModuleContext _context;
 
-        public RefreshTokenRepository(AlternativeEnergyContext context)
+        public RefreshTokenRepository(IdentityModuleContext context)
         {
             _context = context;
         }

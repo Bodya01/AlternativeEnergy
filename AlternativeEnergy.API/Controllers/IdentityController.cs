@@ -1,7 +1,7 @@
 ﻿using AlternativeEnergy.API.Controllers.Base;
-using AlternativeEnergy.Application.Services;
-using AlternativeEnergy.Infrastructure.Identity.Models;
-using AlternativeEnergy.Infrastructure.Models.Dtos;
+using AlternativeEnergy.Identity.Application.Services;
+using AlternativeEnergy.Identity.Infrastructure.Dtos;
+using AlternativeEnergy.Identity.Infrastructure.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

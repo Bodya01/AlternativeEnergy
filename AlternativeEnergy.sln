@@ -4,12 +4,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.API", "AlternativeEnergy.API\AlternativeEnergy.API.csproj", "{627F7112-A94E-4C78-85D5-85F47B5D09A8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA} = {5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Domain", "AlternativeEnergy.Domain\AlternativeEnergy.Domain.csproj", "{B868136F-9C2B-490D-8D5A-17835B45D011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Infrastructure", "AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj", "{8CC3F195-44D2-454F-9185-D929F7056884}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Infrastructure", "AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj", "{8CC3F195-44D2-454F-9185-D929F7056884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Application", "AlternativeEnergy.Application\AlternativeEnergy.Application.csproj", "{7CAF4201-3C0B-45A2-9467-7CFF8CC03882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Application", "AlternativeEnergy.Application\AlternativeEnergy.Application.csproj", "{7CAF4201-3C0B-45A2-9467-7CFF8CC03882}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{25C0C9AD-2D55-4A28-9305-AC205FAAB659}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Domain", "AlternativeEnergy.Identity.Domain\AlternativeEnergy.Identity.Domain.csproj", "{6330B6D8-346E-46EE-B27D-C6270293929D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Application", "AlternativeEnergy.Identity.Application\AlternativeEnergy.Identity.Application.csproj", "{5823504E-63F8-4E61-B308-AA328C3D5DB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Infrastructure", "AlternativeEnergy.Identity.Infrastructure\AlternativeEnergy.Identity.Infrastructure.csproj", "{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8CC3F195-44D2-454F-9185-D929F7056884} = {8CC3F195-44D2-454F-9185-D929F7056884}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +47,26 @@ Global
 		{7CAF4201-3C0B-45A2-9467-7CFF8CC03882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CAF4201-3C0B-45A2-9467-7CFF8CC03882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CAF4201-3C0B-45A2-9467-7CFF8CC03882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6330B6D8-346E-46EE-B27D-C6270293929D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6330B6D8-346E-46EE-B27D-C6270293929D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6330B6D8-346E-46EE-B27D-C6270293929D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6330B6D8-346E-46EE-B27D-C6270293929D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5823504E-63F8-4E61-B308-AA328C3D5DB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5823504E-63F8-4E61-B308-AA328C3D5DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5823504E-63F8-4E61-B308-AA328C3D5DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5823504E-63F8-4E61-B308-AA328C3D5DB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6330B6D8-346E-46EE-B27D-C6270293929D} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
+		{5823504E-63F8-4E61-B308-AA328C3D5DB7} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
+		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDB8793A-0801-4503-B2DC-A7FCA6FF6D11}

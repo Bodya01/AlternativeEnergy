@@ -1,15 +1,15 @@
-﻿using AlternativeEnergy.Infrastructure;
-using AlternativeEnergy.Infrastructure.EFCore.Repositories;
-using AlternativeEnergy.Infrastructure.Identity;
-using AlternativeEnergy.Infrastructure.Identity.Models;
-using AlternativeEnergy.Infrastructure.Models.Dtos;
+﻿using AlternativeEnergy.Identity.Domain.Entities;
+using AlternativeEnergy.Identity.Domain.Repositories;
+using AlternativeEnergy.Identity.Infrastructure.Dtos;
+using AlternativeEnergy.Identity.Infrastructure.Models;
+using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AlternativeEnergy.Application.Services
+namespace AlternativeEnergy.Identity.Application.Services
 {
     internal sealed class IdentityService : IIdentityService
     {
@@ -120,7 +120,7 @@ namespace AlternativeEnergy.Application.Services
 
         private static bool HasValidSecurityAlgorithm(SecurityToken validatedToken)
         {
-            return (validatedToken is JwtSecurityToken jwtSecurityToken)
+            return validatedToken is JwtSecurityToken jwtSecurityToken
                 && jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
                 StringComparison.InvariantCultureIgnoreCase);
         }

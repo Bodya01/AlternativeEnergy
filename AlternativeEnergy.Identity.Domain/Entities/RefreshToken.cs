@@ -1,6 +1,5 @@
-﻿namespace AlternativeEnergy.Infrastructure.Identity
+﻿namespace AlternativeEnergy.Identity.Domain.Entities
 {
-    //TODO: move to identity module
     public sealed class RefreshToken
     {
         public string Token { get; set; }

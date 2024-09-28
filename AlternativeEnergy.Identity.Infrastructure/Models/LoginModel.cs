@@ -1,4 +1,4 @@
-﻿namespace AlternativeEnergy.Infrastructure.Identity.Models
+﻿namespace AlternativeEnergy.Identity.Infrastructure.Models
 {
     public sealed class LoginModel
     {
