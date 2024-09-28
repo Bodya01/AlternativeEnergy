@@ -1,5 +1,6 @@
 ﻿using AlternativeEnergy.Identity.API.Extensions;
 using AlternativeEnergy.Infrastructure;
+using AlternativeEnergy.Sources.API.Extensions;
 using Bootstrapper.Extensions;
 using Bootstrapper.Middleware;
 
@@ -30,10 +31,12 @@ namespace Bootstrapper
             services.AddSingleton(appConfigs);
 
             /*-----module registration-----*/
-            services.AddIdentityModuleDependencies(appConfigs);
+            services.AddIdentityApi(appConfigs)
+                .AddSourcesApi();
 
             services.AddControllers()
-                .UseIdentityApi();
+                .UseIdentityApi()
+                .UseSourcesApi();
             /*-----------------------------*/
 
             services.AddMvc();
