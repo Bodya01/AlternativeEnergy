@@ -1,5 +1,6 @@
 ﻿using AlternativeEnergy.Identity.Domain.Entities;
 using AlternativeEnergy.Identity.Infrastructure.Maps;
+using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.HasDefaultSchema("identity");
+            builder.HasDefaultSchema(DbSchemas.Identity);
             builder.ApplyConfiguration(new RefreshTokenMap());
 
             base.OnModelCreating(builder);

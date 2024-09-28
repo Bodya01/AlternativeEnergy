@@ -1,10 +1,7 @@
 ﻿using AlternativeEnergy.API.Extensions;
 using AlternativeEnergy.API.Middleware;
-using AlternativeEnergy.Application;
 using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 namespace AlternativeEnergy.API

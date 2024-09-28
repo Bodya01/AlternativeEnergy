@@ -1,4 +1,4 @@
-﻿using AlternativeEnergy.Domain.Entities.Interfaces;
+﻿using AlternativeEnergy.Abstractions;
 
 namespace AlternativeEnergy.Domain.Entities
 {

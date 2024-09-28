@@ -1,6 +1,8 @@
-﻿namespace AlternativeEnergy.Identity.Domain.Entities
+﻿using AlternativeEnergy.Abstractions;
+
+namespace AlternativeEnergy.Identity.Domain.Entities
 {
-    public sealed class RefreshToken
+    public sealed class RefreshToken : IEntity
     {
         public string Token { get; set; }
         public string JwtId { get; set; }
