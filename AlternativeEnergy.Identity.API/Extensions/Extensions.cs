@@ -15,17 +15,16 @@ namespace AlternativeEnergy.Identity.API.Extensions
     {
         public static IMvcBuilder UseIdentityApi(this IMvcBuilder builder)
         {
-
-
             builder.AddApplicationPart(typeof(IdentityController).Assembly);
             return builder;
         }
 
-        public static IServiceCollection AddIdentityModuleDependencies(this IServiceCollection services, ApplicationConfigs configs)
+        public static IServiceCollection AddIdentityApi(this IServiceCollection services, ApplicationConfigs configs)
         {
-            services.ConfigureAuthentication(configs)
+            services
                 .RegisterDbContext(configs)
                 .RegisterIdentity()
+                .ConfigureAuthentication(configs) //should go after identity registration
                 .RegisterRepositories()
                 .RegisterApplicationServices();
 
