@@ -2,7 +2,8 @@
 
 namespace AlternativeEnergy.Identity.Application.Exceptions.User
 {
-    public sealed class UserNotFoundException : NotFoundException
+    [Serializable]
+    internal sealed class UserNotFoundException : NotFoundException
     {
         public UserNotFoundException() : base() { }
 

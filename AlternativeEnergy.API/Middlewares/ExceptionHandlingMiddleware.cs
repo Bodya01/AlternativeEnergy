@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Bootstrapper.Middleware
+namespace Bootstrapper.Middlewares
 {
     public class ExceptionHandlingMiddleware
     {

@@ -1,5 +1,6 @@
 ﻿namespace AlternativeEnergy.Identity.Application.Exceptions.User
 {
+    [Serializable]
     internal sealed class UserWasNotCreatedException : InvalidOperationException
     {
         public UserWasNotCreatedException()

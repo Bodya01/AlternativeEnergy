@@ -66,29 +66,26 @@ namespace AlternativeEnergy.Identity.Application.Services
         public async Task<AuthenticationResult> RefreshAsync(RefreshTokenDto refreshTokenDto, CancellationToken cancellationToken = default)
         {
             var validatedToken = GetPrincipalFromToken(refreshTokenDto.Token);
-
             if (validatedToken is null) throw new RefreshTokenIsInvalidException();
 
-            var expiryDateUnix =
-                long.Parse(validatedToken.Claims
+            var expiryDateUnix = long.Parse(validatedToken.Claims
                 .Single(x => x.Type == JwtRegisteredClaimNames.Exp).Value);
 
-            var expiryDateTime =
-                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            var expiryDateTime = DateTime.UnixEpoch
                 .AddSeconds(expiryDateUnix)
                 .Subtract(_configs.JwtSettings.LifeTime);
 
-            if (expiryDateTime > DateTime.UtcNow) throw new RefreshTokenIsExpiredException();
+            if (expiryDateTime > DateTime.UtcNow)
+                throw new RefreshTokenIsExpiredException();
 
             var jti = validatedToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
 
             var storedRefreshToken = await _refreshTokenRepository.GetByIdAsync(refreshTokenDto.RefreshToken, cancellationToken);
-
-            if (storedRefreshToken is null
-                && DateTime.UtcNow > storedRefreshToken.ExpiryDate
-                && storedRefreshToken.Invalidated
-                && storedRefreshToken.IsUsed
-                && storedRefreshToken.JwtId != jti)
+            if (storedRefreshToken is null ||
+                DateTime.UtcNow > storedRefreshToken.ExpiryDate ||
+                storedRefreshToken.Invalidated ||
+                storedRefreshToken.IsUsed ||
+                storedRefreshToken.JwtId != jti)
             {
                 throw new RefreshTokenIsInvalidException();
             }
@@ -97,7 +94,8 @@ namespace AlternativeEnergy.Identity.Application.Services
             await _refreshTokenRepository.UpdateAsync(storedRefreshToken, cancellationToken);
             await _refreshTokenRepository.SaveChangesAsync(cancellationToken);
 
-            var user = await _userManager.FindByIdAsync(validatedToken.Claims.Single(c => c.Type == "Id").Value);
+            var userIdClaim = validatedToken.Claims.Single(c => c.Type == "Id").Value;
+            var user = await _userManager.FindByIdAsync(userIdClaim);
 
             return await GenerateTokenAsync(user, cancellationToken);
         }
@@ -131,7 +129,18 @@ namespace AlternativeEnergy.Identity.Application.Services
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configs.JwtSettings.SecretKey);
-            var tokenDescriptor = new SecurityTokenDescriptor
+
+            var tokenDescriptor = CreateTokenDescriptor(user, key);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            var refreshToken = await CreateRefreshTokenAsync(user, token.Id, cancellationToken);
+
+            return new AuthenticationResult(token.Id, tokenHandler.WriteToken(token), tokenDescriptor.Expires, refreshToken.Token, user);
+        }
+
+        private SecurityTokenDescriptor CreateTokenDescriptor(AppUser user, byte[] key)
+        {
+            return new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(
                 [
@@ -143,12 +152,14 @@ namespace AlternativeEnergy.Identity.Application.Services
                 Expires = DateTime.UtcNow.Add(_configs.JwtSettings.LifeTime),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
+        }
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+        private async Task<RefreshToken> CreateRefreshTokenAsync(AppUser user, string jwtId, CancellationToken cancellationToken = default)
+        {
             var refreshToken = new RefreshToken
             {
                 Token = Guid.NewGuid().ToString(),
-                JwtId = token.Id,
+                JwtId = jwtId,
                 UserId = user.Id,
                 CreationDate = DateTime.UtcNow,
                 ExpiryDate = DateTime.UtcNow.AddMonths(6)
@@ -157,14 +168,7 @@ namespace AlternativeEnergy.Identity.Application.Services
             await _refreshTokenRepository.CreateAsync(refreshToken, cancellationToken);
             await _refreshTokenRepository.SaveChangesAsync(cancellationToken);
 
-            return new AuthenticationResult
-            {
-                JwtId = token.Id,
-                JwtToken = tokenHandler.WriteToken(token),
-                JwtExpireTime = tokenDescriptor.Expires,
-                RefreshToken = refreshToken.Token,
-                User = user,
-            };
+            return refreshToken;
         }
     }
 }

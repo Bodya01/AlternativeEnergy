@@ -2,7 +2,7 @@
 using AlternativeEnergy.Infrastructure;
 using AlternativeEnergy.Sources.API.Extensions;
 using Bootstrapper.Extensions;
-using Bootstrapper.Middleware;
+using Bootstrapper.Middlewares;
 
 namespace Bootstrapper
 {

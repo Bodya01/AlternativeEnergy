@@ -11,5 +11,14 @@ namespace AlternativeEnergy.Identity.Infrastructure.Models
         public DateTime? JwtExpireTime { get; set; }
         public string RefreshToken { get; set; }
         public AppUser User { get; set; }
+
+        public AuthenticationResult(string jwtId, string jwtToken, DateTime? jwtExpireTime, string refreshToken, AppUser user)
+        {
+            JwtId = jwtId;
+            JwtToken = jwtToken;
+            JwtExpireTime = jwtExpireTime;
+            RefreshToken = refreshToken;
+            User = user;
+        }
     }
 }
