@@ -15,7 +15,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.Repositories
         }
 
         public async Task<RefreshToken?> GetByIdAsync(string token, CancellationToken cancellationToken = default) =>
-            await _context.RefreshTokens.FirstOrDefaultAsync(x => x.Token == token, cancellationToken);
+            await _context.RefreshTokens.FirstOrDefaultAsync(x => x.Id == token, cancellationToken);
 
         public async Task<RefreshToken> CreateAsync(RefreshToken model, CancellationToken cancellationToken = default)
         {

@@ -8,7 +8,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.Maps
     {
         public void Configure(EntityTypeBuilder<RefreshToken> builder)
         {
-            builder.HasKey(r => r.Token);
+            builder.HasKey(r => r.Id);
         }
     }
 }

@@ -135,7 +135,7 @@ namespace AlternativeEnergy.Identity.Application.Services
 
             var refreshToken = await CreateRefreshTokenAsync(user, token.Id, cancellationToken);
 
-            return new AuthenticationResult(token.Id, tokenHandler.WriteToken(token), tokenDescriptor.Expires, refreshToken.Token, user);
+            return new AuthenticationResult(token.Id, tokenHandler.WriteToken(token), tokenDescriptor.Expires, refreshToken.Id, user);
         }
 
         private SecurityTokenDescriptor CreateTokenDescriptor(AppUser user, byte[] key)
@@ -158,7 +158,7 @@ namespace AlternativeEnergy.Identity.Application.Services
         {
             var refreshToken = new RefreshToken
             {
-                Token = Guid.NewGuid().ToString(),
+                Id = Guid.NewGuid().ToString(),
                 JwtId = jwtId,
                 UserId = user.Id,
                 CreationDate = DateTime.UtcNow,

@@ -2,9 +2,9 @@
 
 namespace AlternativeEnergy.Identity.Domain.Entities
 {
-    public sealed class RefreshToken : IEntity
+    public sealed class RefreshToken : IEntity<string>
     {
-        public string Token { get; set; }
+        public string Id { get; set; }
         public string JwtId { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime ExpiryDate { get; set; }
