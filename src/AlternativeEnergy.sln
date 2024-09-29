@@ -3,38 +3,38 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrapper", "AlternativeEnergy.API\Bootstrapper.csproj", "{627F7112-A94E-4C78-85D5-85F47B5D09A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrapper", "Bootstrapper\Bootstrapper.csproj", "{627F7112-A94E-4C78-85D5-85F47B5D09A8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{20C43146-6DF8-425A-A3C0-5F009718CA31} = {20C43146-6DF8-425A-A3C0-5F009718CA31}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Domain", "AlternativeEnergy.Domain\AlternativeEnergy.Domain.csproj", "{B868136F-9C2B-490D-8D5A-17835B45D011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Domain", "_Shared\AlternativeEnergy.Domain\AlternativeEnergy.Domain.csproj", "{B868136F-9C2B-490D-8D5A-17835B45D011}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Infrastructure", "AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj", "{8CC3F195-44D2-454F-9185-D929F7056884}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Infrastructure", "_Shared\AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj", "{8CC3F195-44D2-454F-9185-D929F7056884}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{25C0C9AD-2D55-4A28-9305-AC205FAAB659}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Domain", "AlternativeEnergy.Identity.Domain\AlternativeEnergy.Identity.Domain.csproj", "{6330B6D8-346E-46EE-B27D-C6270293929D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Domain", "Modules\Identity\AlternativeEnergy.Identity.Domain\AlternativeEnergy.Identity.Domain.csproj", "{6330B6D8-346E-46EE-B27D-C6270293929D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Application", "AlternativeEnergy.Identity.Application\AlternativeEnergy.Identity.Application.csproj", "{5823504E-63F8-4E61-B308-AA328C3D5DB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Application", "Modules\Identity\AlternativeEnergy.Identity.Application\AlternativeEnergy.Identity.Application.csproj", "{5823504E-63F8-4E61-B308-AA328C3D5DB7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Infrastructure", "AlternativeEnergy.Identity.Infrastructure\AlternativeEnergy.Identity.Infrastructure.csproj", "{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Infrastructure", "Modules\Identity\AlternativeEnergy.Identity.Infrastructure\AlternativeEnergy.Identity.Infrastructure.csproj", "{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8CC3F195-44D2-454F-9185-D929F7056884} = {8CC3F195-44D2-454F-9185-D929F7056884}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.API", "AlternativeEnergy.Identity.API\AlternativeEnergy.Identity.API.csproj", "{20C43146-6DF8-425A-A3C0-5F009718CA31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.API", "Modules\Identity\AlternativeEnergy.Identity.API\AlternativeEnergy.Identity.API.csproj", "{20C43146-6DF8-425A-A3C0-5F009718CA31}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA} = {5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{C1EAA754-413D-4AE4-B157-FA43311FD8CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Abstractions", "AlternativeEnergy.Abstractions\AlternativeEnergy.Abstractions.csproj", "{29F9C232-41EE-4AB8-B95E-99032B72CC55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Abstractions", "_Shared\AlternativeEnergy.Abstractions\AlternativeEnergy.Abstractions.csproj", "{29F9C232-41EE-4AB8-B95E-99032B72CC55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Sources.API", "AlternativeEnergy.Sources.API\AlternativeEnergy.Sources.API.csproj", "{C64B155C-0842-41A3-8BE5-0E640865E495}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Sources.API", "Modules\Sources\AlternativeEnergy.Sources.API\AlternativeEnergy.Sources.API.csproj", "{C64B155C-0842-41A3-8BE5-0E640865E495}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

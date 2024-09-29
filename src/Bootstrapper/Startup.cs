@@ -1,7 +1,4 @@
-﻿using AlternativeEnergy.Identity.API.Extensions;
-using AlternativeEnergy.Infrastructure;
-using AlternativeEnergy.Sources.API.Extensions;
-using Bootstrapper.Extensions;
+﻿using Bootstrapper.Extensions;
 using Bootstrapper.Middlewares;
 
 namespace Bootstrapper
