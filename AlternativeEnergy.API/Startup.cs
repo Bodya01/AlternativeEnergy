@@ -77,9 +77,6 @@ namespace Bootstrapper
             {
                 endpoints.MapControllers();
             });
-
-            // Log that the application has started
-            logger.LogInformation("Application has started successfully.");
         }
     }
 }
