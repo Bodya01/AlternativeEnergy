@@ -7,6 +7,7 @@ using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 
 namespace AlternativeEnergy.Identity.API.Extensions
@@ -15,7 +16,7 @@ namespace AlternativeEnergy.Identity.API.Extensions
     {
         public static IMvcBuilder UseIdentityApi(this IMvcBuilder builder)
         {
-            builder.AddApplicationPart(typeof(IdentityController).Assembly);
+            builder.AddApplicationPart(Assembly.GetExecutingAssembly());
             return builder;
         }
 

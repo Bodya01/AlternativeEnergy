@@ -2,10 +2,7 @@
 using AlternativeEnergy.Infrastructure;
 using AlternativeEnergy.Sources.API.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Identity.Client;
 using Microsoft.OpenApi.Models;
-using System.Data.SqlTypes;
 
 namespace Bootstrapper.Extensions
 {
