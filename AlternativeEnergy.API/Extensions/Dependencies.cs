@@ -1,5 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using AlternativeEnergy.Identity.API.Extensions;
+using AlternativeEnergy.Infrastructure;
+using AlternativeEnergy.Sources.API.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Identity.Client;
 using Microsoft.OpenApi.Models;
+using System.Data.SqlTypes;
 
 namespace Bootstrapper.Extensions
 {
@@ -34,6 +40,27 @@ namespace Bootstrapper.Extensions
             });
 
             return services;
+        }
+
+        public static IServiceCollection AddApplicationModules(this IServiceCollection services, ApplicationConfigs configs)
+        {
+            services.AddIdentityApi(configs)
+                .AddSourcesApi();
+
+            services.AddControllers()
+                .UseIdentityApi()
+                .UseSourcesApi();
+
+            return services;
+        }
+
+        public static ApplicationConfigs AddApplicationConfigsObject(this IServiceCollection services, IConfiguration configuration)
+        {
+            var configs = new ApplicationConfigs();
+            configuration.GetSection("ApplicationConfigurations").Bind(configs);
+            services.AddSingleton(configs);
+
+            return configs;
         }
     }
 }

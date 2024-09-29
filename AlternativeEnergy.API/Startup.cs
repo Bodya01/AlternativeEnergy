@@ -18,6 +18,8 @@ namespace Bootstrapper
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configs = services.AddApplicationConfigsObject(Configuration);
+
             services.AddSwagger();
 
             services.AddLogging(config =>
@@ -26,18 +28,7 @@ namespace Bootstrapper
                 config.AddDebug();
             });
 
-            var appConfigs = new ApplicationConfigs();
-            Configuration.GetSection("ApplicationConfigurations").Bind(appConfigs);
-            services.AddSingleton(appConfigs);
-
-            /*-----module registration-----*/
-            services.AddIdentityApi(appConfigs)
-                .AddSourcesApi();
-
-            services.AddControllers()
-                .UseIdentityApi()
-                .UseSourcesApi();
-            /*-----------------------------*/
+            services.AddApplicationModules(configs);
 
             services.AddMvc();
 
