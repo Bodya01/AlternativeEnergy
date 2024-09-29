@@ -1,4 +1,6 @@
-﻿using AlternativeEnergy.Identity.Domain.Entities;
+﻿using AlternativeEnergy.Identity.Application.Exceptions.RefreshToken;
+using AlternativeEnergy.Identity.Application.Exceptions.User;
+using AlternativeEnergy.Identity.Domain.Entities;
 using AlternativeEnergy.Identity.Domain.Repositories;
 using AlternativeEnergy.Identity.Infrastructure.Dtos;
 using AlternativeEnergy.Identity.Infrastructure.Models;
@@ -30,11 +32,11 @@ namespace AlternativeEnergy.Identity.Application.Services
         {
             var existingUser = await _userManager.FindByEmailAsync(model.Email);
 
-            if (existingUser is null) throw new Exception("User not found");
+            if (existingUser is null) throw new UserNotFoundException();
 
             var isPasswordValid = await _userManager.CheckPasswordAsync(existingUser, model.Password);
 
-            if (!isPasswordValid) throw new Exception("Invalid password");
+            if (!isPasswordValid) throw new InvalidPasswordException();
 
             var authResult = await GenerateTokenAsync(existingUser, cancellationToken);
 
@@ -45,7 +47,7 @@ namespace AlternativeEnergy.Identity.Application.Services
         {
             var existingUser = await _userManager.FindByEmailAsync(model.Email);
 
-            if (existingUser is not null) throw new Exception("User already exists");
+            if (existingUser is not null) throw new UserAlreadyExistsException();
 
             var user = new AppUser
             {
@@ -55,7 +57,7 @@ namespace AlternativeEnergy.Identity.Application.Services
 
             var result = await _userManager.CreateAsync(user, model.Password);
 
-            if (!result.Succeeded) throw new Exception("User creation failed");
+            if (!result.Succeeded) throw new UserWasNotCreatedException();
 
             var authResult = await GenerateTokenAsync(user, cancellationToken);
             return authResult;
@@ -65,7 +67,7 @@ namespace AlternativeEnergy.Identity.Application.Services
         {
             var validatedToken = GetPrincipalFromToken(refreshTokenDto.Token);
 
-            if (validatedToken is null) throw new Exception("Token is invalid");
+            if (validatedToken is null) throw new RefreshTokenIsInvalidException();
 
             var expiryDateUnix =
                 long.Parse(validatedToken.Claims
@@ -76,7 +78,7 @@ namespace AlternativeEnergy.Identity.Application.Services
                 .AddSeconds(expiryDateUnix)
                 .Subtract(_configs.JwtSettings.LifeTime);
 
-            if (expiryDateTime > DateTime.UtcNow) throw new Exception("Refresh token is expired");
+            if (expiryDateTime > DateTime.UtcNow) throw new RefreshTokenIsExpiredException();
 
             var jti = validatedToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
 
@@ -88,7 +90,7 @@ namespace AlternativeEnergy.Identity.Application.Services
                 && storedRefreshToken.IsUsed
                 && storedRefreshToken.JwtId != jti)
             {
-                throw new Exception("Refresh token is not valid");
+                throw new RefreshTokenIsInvalidException();
             }
 
             storedRefreshToken.IsUsed = true;
