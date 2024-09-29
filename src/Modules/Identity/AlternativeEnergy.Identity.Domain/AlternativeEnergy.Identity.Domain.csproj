@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AlternativeEnergy.Abstractions\AlternativeEnergy.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.Abstractions\AlternativeEnergy.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

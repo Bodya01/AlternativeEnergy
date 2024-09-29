@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AlternativeEnergy.Identity.API\AlternativeEnergy.Identity.API.csproj" />
-    <ProjectReference Include="..\AlternativeEnergy.Sources.API\AlternativeEnergy.Sources.API.csproj" />
+    <ProjectReference Include="..\Modules\Identity\AlternativeEnergy.Identity.API\AlternativeEnergy.Identity.API.csproj" />
+    <ProjectReference Include="..\Modules\Sources\AlternativeEnergy.Sources.API\AlternativeEnergy.Sources.API.csproj" />
   </ItemGroup>
 
 </Project>
