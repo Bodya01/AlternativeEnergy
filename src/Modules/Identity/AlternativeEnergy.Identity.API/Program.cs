@@ -6,7 +6,7 @@ namespace AlternativeEnergy.Identity.API
         {
             CreateHostBuilder(args).Build().Run();
         }
-
+        //asd
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
