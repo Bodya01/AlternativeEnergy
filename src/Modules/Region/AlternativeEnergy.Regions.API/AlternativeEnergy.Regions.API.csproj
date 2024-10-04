@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <Content Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+    <_WebToolingArtifacts Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj" />
+    <ProjectReference Include="..\AlternativeEnergy.Regions.Application\AlternativeEnergy.Regions.Application.csproj" />
+    <ProjectReference Include="..\AlternativeEnergy.Regions.Infrastructure\AlternativeEnergy.Regions.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
