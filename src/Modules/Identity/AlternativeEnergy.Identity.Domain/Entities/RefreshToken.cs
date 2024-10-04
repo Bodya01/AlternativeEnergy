@@ -1,4 +1,4 @@
-﻿using AlternativeEnergy.Abstractions;
+﻿using AlternativeEnergy.DDD.Interfaces;
 
 namespace AlternativeEnergy.Identity.Domain.Entities
 {

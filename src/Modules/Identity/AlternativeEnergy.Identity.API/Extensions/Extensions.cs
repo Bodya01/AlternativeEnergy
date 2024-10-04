@@ -1,5 +1,4 @@
-﻿using AlternativeEnergy.Identity.API.Controllers;
-using AlternativeEnergy.Identity.Application;
+﻿using AlternativeEnergy.Identity.Application;
 using AlternativeEnergy.Identity.Domain.Entities;
 using AlternativeEnergy.Identity.Infrastructure;
 using AlternativeEnergy.Identity.Infrastructure.Context;
@@ -20,14 +19,24 @@ namespace AlternativeEnergy.Identity.API.Extensions
             return builder;
         }
 
+        public static IApplicationBuilder UseIdentityServerMiddleware(this IApplicationBuilder app)
+        {
+            app.UseIdentityServer();
+
+            return app;
+        }
+
         public static IServiceCollection AddIdentityApi(this IServiceCollection services, ApplicationConfigs configs)
         {
             services
                 .RegisterDbContext(configs)
                 .RegisterIdentity()
-                .ConfigureAuthentication(configs) //should go after identity registration
+                .ConfigureAuthentication(configs)
+                //.AddDuendeIdentityServer(configs) //should go after identity registration
                 .RegisterRepositories()
                 .RegisterApplicationServices();
+
+            services.AddSingleton(GetValidationParameters(configs));
 
             return services;
         }
@@ -71,6 +80,51 @@ namespace AlternativeEnergy.Identity.API.Extensions
                 RequireExpirationTime = false,
                 ValidateLifetime = false,
             };
+        }
+
+
+        public static IServiceCollection AddDuendeIdentityServer(this IServiceCollection services, ApplicationConfigs configs)
+        {
+
+            services.AddIdentity<AppUser, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<IdentityModuleContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = "https://localhost:7282/";
+                    options.Audience = "aeAPI";
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidIssuer = "https://localhost:7282/",
+                        ValidAudience = "aeAPI"
+                    };
+                });
+
+            services.AddIdentityServer(o =>
+            {
+                o.Events.RaiseErrorEvents = true;
+                o.Events.RaiseInformationEvents = true;
+                o.Events.RaiseFailureEvents = true;
+                o.Events.RaiseSuccessEvents = true;
+
+                //o.EmitStaticAudienceClaim = true;
+            })
+                .AddAspNetIdentity<AppUser>()
+                .AddInMemoryIdentityResources(AuthConfig.IdentityResources)
+                .AddInMemoryApiResources(AuthConfig.ApiResources)
+                .AddInMemoryApiScopes(AuthConfig.ApiScopes)
+                .AddInMemoryClients(AuthConfig.Clients);
+
+            return services;
         }
     }
 }
