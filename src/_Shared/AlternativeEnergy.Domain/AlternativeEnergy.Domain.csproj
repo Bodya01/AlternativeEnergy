@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AlternativeEnergy.Abstractions\AlternativeEnergy.Abstractions.csproj" />
+    <ProjectReference Include="..\AlternativeEnergy.DDD\AlternativeEnergy.DDD.csproj" />
   </ItemGroup>
 
 </Project>

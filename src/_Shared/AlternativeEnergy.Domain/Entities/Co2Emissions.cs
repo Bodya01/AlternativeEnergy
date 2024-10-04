@@ -1,4 +1,5 @@
-﻿using AlternativeEnergy.Abstractions;
+﻿using AlternativeEnergy.DDD;
+using AlternativeEnergy.DDD.Interfaces;
 
 namespace AlternativeEnergy.Domain.Entities
 {
@@ -11,5 +12,7 @@ namespace AlternativeEnergy.Domain.Entities
 
         public Guid SourceId { get; set; }
         public Guid RegionId { get; set; }
+
+        public IReadOnlyList<IDomainEvent> Events => throw new NotImplementedException();
     }
 }

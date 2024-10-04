@@ -9,12 +9,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrapper", "Bootstrappe
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Domain", "_Shared\AlternativeEnergy.Domain\AlternativeEnergy.Domain.csproj", "{B868136F-9C2B-490D-8D5A-17835B45D011}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55E1CE90-B728-4455-8320-E916A2F70A87} = {55E1CE90-B728-4455-8320-E916A2F70A87}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Infrastructure", "_Shared\AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj", "{8CC3F195-44D2-454F-9185-D929F7056884}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{25C0C9AD-2D55-4A28-9305-AC205FAAB659}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Domain", "Modules\Identity\AlternativeEnergy.Identity.Domain\AlternativeEnergy.Identity.Domain.csproj", "{6330B6D8-346E-46EE-B27D-C6270293929D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55E1CE90-B728-4455-8320-E916A2F70A87} = {55E1CE90-B728-4455-8320-E916A2F70A87}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.Application", "Modules\Identity\AlternativeEnergy.Identity.Application\AlternativeEnergy.Identity.Application.csproj", "{5823504E-63F8-4E61-B308-AA328C3D5DB7}"
 EndProject
@@ -35,15 +41,42 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Sources.API", "Modules\Sources\AlternativeEnergy.Sources.API\AlternativeEnergy.Sources.API.csproj", "{C64B155C-0842-41A3-8BE5-0E640865E495}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Sources.Domain", "Modules\Sources\AlternativeEnergy.Sources.Domain\AlternativeEnergy.Sources.Domain.csproj", "{D14B6ED3-73A6-42CA-9AB1-D253CA0ED1BE}"
 	ProjectSection(ProjectDependencies) = postProject
-		{29F9C232-41EE-4AB8-B95E-99032B72CC55} = {29F9C232-41EE-4AB8-B95E-99032B72CC55}
+		{389D8D51-17B9-4271-928A-31B5D7167B82} = {389D8D51-17B9-4271-928A-31B5D7167B82}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Sources.Infrastructure", "Modules\Sources\AlternativeEnergy.Sources.Infrastructure\AlternativeEnergy.Sources.Infrastructure.csproj", "{E6F32175-8F8C-4DF1-8A68-6B7A7988F2D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Sources.Domain", "Modules\Sources\AlternativeEnergy.Sources.Domain\AlternativeEnergy.Sources.Domain.csproj", "{D14B6ED3-73A6-42CA-9AB1-D253CA0ED1BE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{29F9C232-41EE-4AB8-B95E-99032B72CC55} = {29F9C232-41EE-4AB8-B95E-99032B72CC55}
+		{55E1CE90-B728-4455-8320-E916A2F70A87} = {55E1CE90-B728-4455-8320-E916A2F70A87}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Sources.Application", "Modules\Sources\AlternativeEnergy.Sources.Application\AlternativeEnergy.Sources.Application.csproj", "{389D8D51-17B9-4271-928A-31B5D7167B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Sources.Infrastructure", "Modules\Sources\AlternativeEnergy.Sources.Infrastructure\AlternativeEnergy.Sources.Infrastructure.csproj", "{E6F32175-8F8C-4DF1-8A68-6B7A7988F2D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Sources.Application", "Modules\Sources\AlternativeEnergy.Sources.Application\AlternativeEnergy.Sources.Application.csproj", "{389D8D51-17B9-4271-928A-31B5D7167B82}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D14B6ED3-73A6-42CA-9AB1-D253CA0ED1BE} = {D14B6ED3-73A6-42CA-9AB1-D253CA0ED1BE}
+		{E6F32175-8F8C-4DF1-8A68-6B7A7988F2D2} = {E6F32175-8F8C-4DF1-8A68-6B7A7988F2D2}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.DDD", "_Shared\AlternativeEnergy.DDD\AlternativeEnergy.DDD.csproj", "{55E1CE90-B728-4455-8320-E916A2F70A87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Regions", "Regions", "{6FD04CEA-2F4E-486B-9BD8-C16666DC04DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Regions.Domain", "Modules\Region\AlternativeEnergy.Regions.Domain\AlternativeEnergy.Regions.Domain.csproj", "{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55E1CE90-B728-4455-8320-E916A2F70A87} = {55E1CE90-B728-4455-8320-E916A2F70A87}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Regions.Infrastructure", "Modules\Region\AlternativeEnergy.Regions.Infrastructure\AlternativeEnergy.Regions.Infrastructure.csproj", "{79D588EF-C9D0-49A2-ADE8-2D805BB4F233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Regions.API", "Modules\Region\AlternativeEnergy.Regions.API\AlternativeEnergy.Regions.API.csproj", "{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Regions.Application", "Modules\Region\AlternativeEnergy.Regions.Application\AlternativeEnergy.Regions.Application.csproj", "{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394} = {66F56BBD-F3E0-4AA4-ACCB-0001B61F1394}
+		{79D588EF-C9D0-49A2-ADE8-2D805BB4F233} = {79D588EF-C9D0-49A2-ADE8-2D805BB4F233}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +132,26 @@ Global
 		{389D8D51-17B9-4271-928A-31B5D7167B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{389D8D51-17B9-4271-928A-31B5D7167B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{389D8D51-17B9-4271-928A-31B5D7167B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E1CE90-B728-4455-8320-E916A2F70A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E1CE90-B728-4455-8320-E916A2F70A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E1CE90-B728-4455-8320-E916A2F70A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E1CE90-B728-4455-8320-E916A2F70A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D588EF-C9D0-49A2-ADE8-2D805BB4F233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D588EF-C9D0-49A2-ADE8-2D805BB4F233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D588EF-C9D0-49A2-ADE8-2D805BB4F233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D588EF-C9D0-49A2-ADE8-2D805BB4F233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +168,11 @@ Global
 		{D14B6ED3-73A6-42CA-9AB1-D253CA0ED1BE} = {F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}
 		{E6F32175-8F8C-4DF1-8A68-6B7A7988F2D2} = {F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}
 		{389D8D51-17B9-4271-928A-31B5D7167B82} = {F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}
+		{55E1CE90-B728-4455-8320-E916A2F70A87} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
+		{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394} = {6FD04CEA-2F4E-486B-9BD8-C16666DC04DF}
+		{79D588EF-C9D0-49A2-ADE8-2D805BB4F233} = {6FD04CEA-2F4E-486B-9BD8-C16666DC04DF}
+		{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F} = {6FD04CEA-2F4E-486B-9BD8-C16666DC04DF}
+		{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F} = {6FD04CEA-2F4E-486B-9BD8-C16666DC04DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDB8793A-0801-4503-B2DC-A7FCA6FF6D11}
