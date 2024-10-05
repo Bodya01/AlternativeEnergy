@@ -1,18 +1,21 @@
-﻿using AlternativeEnergy.Sources.API.Controllers;
+﻿using AlternativeEnergy.Infrastructure;
+using AlternativeEnergy.Sources.Application;
+using AlternativeEnergy.Sources.Infrastructure;
+using System.Reflection;
 
 namespace AlternativeEnergy.Sources.API.Extensions
 {
     public static class Extensions
     {
-        public static IMvcBuilder UseSourcesApi(this IMvcBuilder builder)
-        {
-            var assembly = typeof(SourcesController).Assembly;
-            builder.AddApplicationPart(typeof(SourcesController).Assembly);
-            return builder;
-        }
+        public static IMvcBuilder UseSourcesApi(this IMvcBuilder builder) =>
+            builder.AddApplicationPart(Assembly.GetExecutingAssembly());
 
-        public static IServiceCollection AddSourcesApi(this IServiceCollection services)
+        public static IServiceCollection AddSourcesApi(this IServiceCollection services, ApplicationConfigs configs)
         {
+            services.AddSourcesContext(configs)
+                .AddSourcesRepositories()
+                .AddSourcesHandlers();
+
             return services;
         }
     }

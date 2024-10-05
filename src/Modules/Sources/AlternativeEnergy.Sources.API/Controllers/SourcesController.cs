@@ -10,7 +10,7 @@ namespace AlternativeEnergy.Sources.API.Controllers
     {
 
         [HttpGet("get/{userId:guid}")]
-        public IActionResult Get(Guid userId)
+        public IActionResult Get([FromRoute] Guid userId)
         {
             return Ok();
         }

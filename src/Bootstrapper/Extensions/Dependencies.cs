@@ -1,5 +1,6 @@
 ﻿using AlternativeEnergy.Identity.API.Extensions;
 using AlternativeEnergy.Infrastructure;
+using AlternativeEnergy.Regions.API;
 using AlternativeEnergy.Sources.API.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
@@ -42,11 +43,13 @@ namespace Bootstrapper.Extensions
         public static IServiceCollection AddApplicationModules(this IServiceCollection services, ApplicationConfigs configs)
         {
             services.AddIdentityApi(configs)
-                .AddSourcesApi();
+                .AddSourcesApi(configs)
+                .AddRegionsApi(configs);
 
             services.AddControllers()
                 .UseIdentityApi()
-                .UseSourcesApi();
+                .UseSourcesApi()
+                .UseRegionsApi();
 
             return services;
         }

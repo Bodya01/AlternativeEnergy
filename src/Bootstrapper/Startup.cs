@@ -61,6 +61,8 @@ namespace Bootstrapper
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //app.UseIdentityServer();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

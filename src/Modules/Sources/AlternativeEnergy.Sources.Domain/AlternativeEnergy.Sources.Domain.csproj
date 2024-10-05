@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.Abstractions\AlternativeEnergy.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.DDD\AlternativeEnergy.DDD.csproj" />
   </ItemGroup>
 
 </Project>

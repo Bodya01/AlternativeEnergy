@@ -1,4 +1,4 @@
-﻿using AlternativeEnergy.Abstractions.Repository;
+﻿using AlternativeEnergy.DDD.Repositories;
 using AlternativeEnergy.Sources.Domain.Entities;
 
 namespace AlternativeEnergy.Sources.Domain.Repositories
