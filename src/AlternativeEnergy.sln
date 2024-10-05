@@ -36,8 +36,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Identity.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{C1EAA754-413D-4AE4-B157-FA43311FD8CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Abstractions", "_Shared\AlternativeEnergy.Abstractions\AlternativeEnergy.Abstractions.csproj", "{29F9C232-41EE-4AB8-B95E-99032B72CC55}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Sources.API", "Modules\Sources\AlternativeEnergy.Sources.API\AlternativeEnergy.Sources.API.csproj", "{C64B155C-0842-41A3-8BE5-0E640865E495}"
@@ -47,7 +45,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Sources.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Sources.Domain", "Modules\Sources\AlternativeEnergy.Sources.Domain\AlternativeEnergy.Sources.Domain.csproj", "{D14B6ED3-73A6-42CA-9AB1-D253CA0ED1BE}"
 	ProjectSection(ProjectDependencies) = postProject
-		{29F9C232-41EE-4AB8-B95E-99032B72CC55} = {29F9C232-41EE-4AB8-B95E-99032B72CC55}
 		{55E1CE90-B728-4455-8320-E916A2F70A87} = {55E1CE90-B728-4455-8320-E916A2F70A87}
 	EndProjectSection
 EndProject
@@ -70,9 +67,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Regions.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Regions.Infrastructure", "Modules\Region\AlternativeEnergy.Regions.Infrastructure\AlternativeEnergy.Regions.Infrastructure.csproj", "{79D588EF-C9D0-49A2-ADE8-2D805BB4F233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Regions.API", "Modules\Region\AlternativeEnergy.Regions.API\AlternativeEnergy.Regions.API.csproj", "{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Regions.API", "Modules\Region\AlternativeEnergy.Regions.API\AlternativeEnergy.Regions.API.csproj", "{1C4ACDE9-F95D-4F05-9E64-668B11B28F3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Regions.Application", "Modules\Region\AlternativeEnergy.Regions.Application\AlternativeEnergy.Regions.Application.csproj", "{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Regions.Application", "Modules\Region\AlternativeEnergy.Regions.Application\AlternativeEnergy.Regions.Application.csproj", "{686E42B2-8B7A-4B1A-A5E9-CB8CF7864F4F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{66F56BBD-F3E0-4AA4-ACCB-0001B61F1394} = {66F56BBD-F3E0-4AA4-ACCB-0001B61F1394}
 		{79D588EF-C9D0-49A2-ADE8-2D805BB4F233} = {79D588EF-C9D0-49A2-ADE8-2D805BB4F233}
@@ -112,10 +109,6 @@ Global
 		{20C43146-6DF8-425A-A3C0-5F009718CA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20C43146-6DF8-425A-A3C0-5F009718CA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20C43146-6DF8-425A-A3C0-5F009718CA31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29F9C232-41EE-4AB8-B95E-99032B72CC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29F9C232-41EE-4AB8-B95E-99032B72CC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29F9C232-41EE-4AB8-B95E-99032B72CC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29F9C232-41EE-4AB8-B95E-99032B72CC55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C64B155C-0842-41A3-8BE5-0E640865E495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C64B155C-0842-41A3-8BE5-0E640865E495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C64B155C-0842-41A3-8BE5-0E640865E495}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -163,7 +156,6 @@ Global
 		{5823504E-63F8-4E61-B308-AA328C3D5DB7} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
 		{5DB06CD7-7EFC-46CA-9FB0-9EFAA64564DA} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
 		{20C43146-6DF8-425A-A3C0-5F009718CA31} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
-		{29F9C232-41EE-4AB8-B95E-99032B72CC55} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
 		{C64B155C-0842-41A3-8BE5-0E640865E495} = {F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}
 		{D14B6ED3-73A6-42CA-9AB1-D253CA0ED1BE} = {F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}
 		{E6F32175-8F8C-4DF1-8A68-6B7A7988F2D2} = {F47EE4C3-8BAA-4DBA-8D23-7103614A0AE6}
