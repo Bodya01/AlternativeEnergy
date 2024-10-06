@@ -8,7 +8,7 @@ namespace AlternativeEnergy.DDD
 
         public Guid Id { get; set; }
         public int Version { get; protected set; }
-        public IReadOnlyList<IDomainEvent> Events => _events?.AsReadOnly();
+        public IReadOnlyList<IDomainEvent>? Events => _events?.AsReadOnly();
 
         protected Entity(Guid? id = null)
         {

@@ -1,6 +1,6 @@
 ﻿namespace AlternativeEnergy.DDD.Interfaces
 {
-    public interface IEntity : IEntity<Guid>, IHasDomainEvents { }
+    public interface IEntity : IEntity<Guid>;
 
     public interface IEntity<TKey>
     {
