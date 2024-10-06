@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrapper", "Bootstrapper\Bootstrapper.csproj", "{627F7112-A94E-4C78-85D5-85F47B5D09A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Bootstrapper", "Bootstrapper\AlternativeEnergy.Bootstrapper.csproj", "{627F7112-A94E-4C78-85D5-85F47B5D09A8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{20C43146-6DF8-425A-A3C0-5F009718CA31} = {20C43146-6DF8-425A-A3C0-5F009718CA31}
 	EndProjectSection
