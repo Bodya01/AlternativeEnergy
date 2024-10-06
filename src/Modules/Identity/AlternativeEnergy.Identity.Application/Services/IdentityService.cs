@@ -1,11 +1,9 @@
-﻿using AlternativeEnergy.Identity.Application.Exceptions.RefreshToken;
+﻿using AlternativeEnergy.Identity.Application.Commands;
+using AlternativeEnergy.Identity.Application.Exceptions.RefreshToken;
 using AlternativeEnergy.Identity.Application.Exceptions.User;
 using AlternativeEnergy.Identity.Domain.Entities;
 using AlternativeEnergy.Identity.Domain.Repositories;
-using AlternativeEnergy.Identity.Infrastructure.Dtos;
-using AlternativeEnergy.Identity.Infrastructure.Models;
 using AlternativeEnergy.Infrastructure;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,24 +15,24 @@ namespace AlternativeEnergy.Identity.Application.Services
     {
         private readonly ApplicationConfigs _configs;
         private readonly TokenValidationParameters _tokenValidationParameters;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly IUserRepository _userRepository;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
 
-        public IdentityService(ApplicationConfigs configs, TokenValidationParameters tokenValidationParameters, UserManager<AppUser> userManager, IRefreshTokenRepository refreshTokenRepository)
+        public IdentityService(ApplicationConfigs configs, TokenValidationParameters tokenValidationParameters, IUserRepository userRepository, IRefreshTokenRepository refreshTokenRepository)
         {
             _configs = configs;
             _tokenValidationParameters = tokenValidationParameters;
-            _userManager = userManager;
+            _userRepository = userRepository;
             _refreshTokenRepository = refreshTokenRepository;
         }
 
-        public async Task<AuthenticationResult> LoginAsync(LoginModel model, CancellationToken cancellationToken = default)
+        public async Task<AuthenticationResult> LoginAsync(LoginUser model, CancellationToken cancellationToken = default)
         {
-            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            var existingUser = await _userRepository.GetByEmailAsync(model.Email, cancellationToken);
 
             if (existingUser is null) throw new UserNotFoundException();
 
-            var isPasswordValid = await _userManager.CheckPasswordAsync(existingUser, model.Password);
+            var isPasswordValid = await _userRepository.ValidatePassword(existingUser.Id, model.Password, cancellationToken);
 
             if (!isPasswordValid) throw new InvalidPasswordException();
 
@@ -45,25 +43,23 @@ namespace AlternativeEnergy.Identity.Application.Services
 
         public async Task<AuthenticationResult> RegisterAsync(RegistrationModel model, CancellationToken cancellationToken = default)
         {
-            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            var existingUser = await _userRepository.GetByEmailAsync(model.Email, cancellationToken);
 
-            if (existingUser is not null) throw new UserAlreadyExistsException();
+            if (existingUser is not null) throw new EmailAlreadyTakenException(model.Email);
 
-            var user = new AppUser
-            {
-                Email = model.Email,
-                UserName = model.UserName
-            };
+            var user = User.Create(Guid.NewGuid(), model.Email, model.UserName, model.RegionId);
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            //TODO: Check for existance of region
 
-            if (!result.Succeeded) throw new UserWasNotCreatedException();
+            var result = await _userRepository.CreateAsync(user, cancellationToken);
+
+            if (result == default) throw new UserWasNotCreatedException();
 
             var authResult = await GenerateTokenAsync(user, cancellationToken);
             return authResult;
         }
 
-        public async Task<AuthenticationResult> RefreshAsync(RefreshTokenDto refreshTokenDto, CancellationToken cancellationToken = default)
+        public async Task<AuthenticationResult> RefreshAsync(RefreshAccessToken refreshTokenDto, CancellationToken cancellationToken = default)
         {
             var validatedToken = GetPrincipalFromToken(refreshTokenDto.Token);
             if (validatedToken is null) throw new RefreshTokenIsInvalidException();
@@ -92,10 +88,9 @@ namespace AlternativeEnergy.Identity.Application.Services
 
             storedRefreshToken.IsUsed = true;
             await _refreshTokenRepository.UpdateAsync(storedRefreshToken, cancellationToken);
-            await _refreshTokenRepository.SaveChangesAsync(cancellationToken);
 
-            var userIdClaim = validatedToken.Claims.Single(c => c.Type == "Id").Value;
-            var user = await _userManager.FindByIdAsync(userIdClaim);
+            Guid.TryParse(validatedToken.Claims.Single(c => c.Type == "Id").Value, out Guid userIdClaim);
+            var user = await _userRepository.GetByIdAsync(userIdClaim, cancellationToken);
 
             return await GenerateTokenAsync(user, cancellationToken);
         }
@@ -125,7 +120,7 @@ namespace AlternativeEnergy.Identity.Application.Services
                 StringComparison.InvariantCultureIgnoreCase);
         }
 
-        private async Task<AuthenticationResult> GenerateTokenAsync(AppUser user, CancellationToken cancellationToken = default)
+        private async Task<AuthenticationResult> GenerateTokenAsync(User user, CancellationToken cancellationToken = default)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configs.JwtSettings.SecretKey);
@@ -138,7 +133,7 @@ namespace AlternativeEnergy.Identity.Application.Services
             return new AuthenticationResult(token.Id, tokenHandler.WriteToken(token), tokenDescriptor.Expires, refreshToken.Id, user);
         }
 
-        private SecurityTokenDescriptor CreateTokenDescriptor(AppUser user, byte[] key)
+        private SecurityTokenDescriptor CreateTokenDescriptor(User user, byte[] key)
         {
             return new SecurityTokenDescriptor
             {
@@ -154,7 +149,7 @@ namespace AlternativeEnergy.Identity.Application.Services
             };
         }
 
-        private async Task<RefreshToken> CreateRefreshTokenAsync(AppUser user, string jwtId, CancellationToken cancellationToken = default)
+        private async Task<RefreshToken> CreateRefreshTokenAsync(User user, string jwtId, CancellationToken cancellationToken = default)
         {
             var refreshToken = new RefreshToken
             {
@@ -166,7 +161,6 @@ namespace AlternativeEnergy.Identity.Application.Services
             };
 
             await _refreshTokenRepository.CreateAsync(refreshToken, cancellationToken);
-            await _refreshTokenRepository.SaveChangesAsync(cancellationToken);
 
             return refreshToken;
         }

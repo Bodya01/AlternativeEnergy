@@ -1,6 +1,5 @@
-﻿using AlternativeEnergy.Identity.Application.Services;
-using AlternativeEnergy.Identity.Infrastructure.Dtos;
-using AlternativeEnergy.Identity.Infrastructure.Models;
+﻿using AlternativeEnergy.Identity.Application.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,25 +11,25 @@ namespace AlternativeEnergy.Identity.API.Controllers
     public sealed class IdentityController : ControllerBase
     {
         //private readonly UserManager<AppUser> _userManager;
-        private readonly IIdentityService _identityService;
+        private readonly IMediator _mediator;
 
-        public IdentityController(IIdentityService identityService/*, UserManager<AppUser> userManager*/) : base()
+        public IdentityController(IMediator mediator/*, UserManager<AppUser> userManager*/) : base()
         {
-            _identityService = identityService;
+            _mediator = mediator;
             //_userManager = userManager;
         }
 
         [HttpPost("sign-in")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model, CancellationToken cancellationToken) =>
-            Ok(await _identityService.LoginAsync(model, cancellationToken));
+        public async Task<IActionResult> Login([FromBody] LoginUser model, CancellationToken cancellationToken) =>
+            Ok(await _mediator.Send(model, cancellationToken));
 
         [HttpPost("sign-up")]
         public async Task<IActionResult> Register([FromBody] RegistrationModel model, CancellationToken cancellationToken) =>
-            Ok(await _identityService.RegisterAsync(model, cancellationToken));
+            Ok(await _mediator.Send(model, cancellationToken));
 
         [HttpPost("refresh")]
-        public async Task<IActionResult> Refresh([FromBody] RefreshTokenDto model, CancellationToken cancellationToken) =>
-            Ok(await _identityService.RefreshAsync(model, cancellationToken));
+        public async Task<IActionResult> Refresh([FromBody] RefreshAccessToken model, CancellationToken cancellationToken) =>
+            Ok(await _mediator.Send(model, cancellationToken));
 
         //[HttpPost("register")]
         //public async Task<IActionResult> Register([FromBody] RegistrationModel model)

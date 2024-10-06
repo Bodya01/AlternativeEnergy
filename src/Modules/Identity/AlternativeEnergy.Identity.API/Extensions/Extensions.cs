@@ -1,7 +1,6 @@
 ﻿using AlternativeEnergy.Identity.Application;
-using AlternativeEnergy.Identity.Domain.Entities;
-using AlternativeEnergy.Identity.Infrastructure;
-using AlternativeEnergy.Identity.Infrastructure.Context;
+using AlternativeEnergy.Identity.Infrastructure.EF.DbModels;
+using AlternativeEnergy.Identity.Infrastructure.Extensions;
 using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -37,15 +36,6 @@ namespace AlternativeEnergy.Identity.API.Extensions
                 .RegisterApplicationServices();
 
             services.AddSingleton(GetValidationParameters(configs));
-
-            return services;
-        }
-
-        public static IServiceCollection RegisterIdentity(this IServiceCollection services)
-        {
-            services.AddIdentity<AppUser, IdentityRole<Guid>>()
-                .AddEntityFrameworkStores<IdentityModuleContext>()
-                .AddDefaultTokenProviders();
 
             return services;
         }
@@ -86,9 +76,7 @@ namespace AlternativeEnergy.Identity.API.Extensions
         public static IServiceCollection AddDuendeIdentityServer(this IServiceCollection services, ApplicationConfigs configs)
         {
 
-            services.AddIdentity<AppUser, IdentityRole<Guid>>()
-                .AddEntityFrameworkStores<IdentityModuleContext>()
-                .AddDefaultTokenProviders();
+            services.RegisterIdentity();
 
             services.AddAuthentication(options =>
             {

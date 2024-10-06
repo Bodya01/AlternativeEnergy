@@ -1,11 +1,13 @@
 ﻿using AlternativeEnergy.Identity.Domain.Repositories;
-using AlternativeEnergy.Identity.Infrastructure.Context;
-using AlternativeEnergy.Identity.Infrastructure.Repositories;
+using AlternativeEnergy.Identity.Infrastructure.EF.Context;
+using AlternativeEnergy.Identity.Infrastructure.EF.DbModels;
+using AlternativeEnergy.Identity.Infrastructure.EF.Repositories;
 using AlternativeEnergy.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AlternativeEnergy.Identity.Infrastructure
+namespace AlternativeEnergy.Identity.Infrastructure.Extensions
 {
     public static class Dependencies
     {
@@ -20,6 +22,15 @@ namespace AlternativeEnergy.Identity.Infrastructure
         public static IServiceCollection RegisterRepositories(this IServiceCollection services)
         {
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection RegisterIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<AppUser, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<IdentityModuleContext>()
+                .AddDefaultTokenProviders();
 
             return services;
         }

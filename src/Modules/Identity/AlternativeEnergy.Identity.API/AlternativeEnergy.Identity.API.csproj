@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AlternativeEnergy.Identity.Application\AlternativeEnergy.Identity.Application.csproj" />
+    <ProjectReference Include="..\AlternativeEnergy.Identity.Infrastructure\AlternativeEnergy.Identity.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

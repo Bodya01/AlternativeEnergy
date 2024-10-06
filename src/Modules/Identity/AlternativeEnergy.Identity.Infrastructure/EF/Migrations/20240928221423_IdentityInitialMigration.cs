@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AlternativeEnergy.Identity.Infrastructure.Migrations
+namespace AlternativeEnergy.Identity.Infrastructure.EF.Migrations
 {
     /// <inheritdoc />
     public partial class IdentityInitialMigration : Migration

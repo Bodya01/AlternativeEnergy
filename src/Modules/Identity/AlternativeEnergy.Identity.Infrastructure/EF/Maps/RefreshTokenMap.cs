@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AlternativeEnergy.Identity.Infrastructure.Maps
+namespace AlternativeEnergy.Identity.Infrastructure.EF.Maps
 {
     internal sealed class RefreshTokenMap : IEntityTypeConfiguration<RefreshToken>
     {

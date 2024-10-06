@@ -7,6 +7,5 @@ namespace AlternativeEnergy.Identity.Domain.Repositories
         Task<RefreshToken?> GetByIdAsync(string token, CancellationToken cancellationToken = default);
         Task<RefreshToken> CreateAsync(RefreshToken model, CancellationToken cancellationToken = default);
         Task<RefreshToken> UpdateAsync(RefreshToken model, CancellationToken cancellationToken = default);
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

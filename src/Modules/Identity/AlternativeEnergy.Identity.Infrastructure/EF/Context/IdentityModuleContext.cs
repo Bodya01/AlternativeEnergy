@@ -1,13 +1,14 @@
 ﻿using AlternativeEnergy.Identity.Domain.Entities;
-using AlternativeEnergy.Identity.Infrastructure.Maps;
+using AlternativeEnergy.Identity.Infrastructure.EF.DbModels;
+using AlternativeEnergy.Identity.Infrastructure.EF.Maps;
 using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AlternativeEnergy.Identity.Infrastructure.Context
+namespace AlternativeEnergy.Identity.Infrastructure.EF.Context
 {
-    public sealed class IdentityModuleContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
+    internal sealed class IdentityModuleContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
     {
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
