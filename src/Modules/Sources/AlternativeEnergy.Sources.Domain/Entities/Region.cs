@@ -7,8 +7,9 @@ namespace AlternativeEnergy.Sources.Domain.Entities
         public Guid Id { get; private set; }
         public string Name { get; private set; }
 
-        public Region(string name)
+        public Region(Guid id, string name)
         {
+            Id = id;
             Name = name;
         }
 

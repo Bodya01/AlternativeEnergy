@@ -23,6 +23,7 @@ namespace AlternativeEnergy.Sources.Infrastructure
         {
             services.AddScoped<ISourceRepository, SourceRepository>();
             services.AddScoped<IUserEnergyChoiceRepository, UserEnergyChoiceRepository>();
+            services.AddScoped<IRegionRepository, RegionRepository>();
 
             return services;
         }

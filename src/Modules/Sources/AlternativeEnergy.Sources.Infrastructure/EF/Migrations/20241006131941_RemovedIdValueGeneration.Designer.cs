@@ -4,16 +4,19 @@ using AlternativeEnergy.Sources.Infrastructure.EF.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AlternativeEnergy.Sources.Infrastructure.Migrations
+namespace AlternativeEnergy.Sources.Infrastructure.EF.Migrations
 {
     [DbContext(typeof(SourcesModuleContext))]
-    partial class SourcesModuleContextModelSnapshot : ModelSnapshot
+    [Migration("20241006131941_RemovedIdValueGeneration")]
+    partial class RemovedIdValueGeneration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,6 @@ namespace AlternativeEnergy.Sources.Infrastructure.Migrations
             modelBuilder.Entity("AlternativeEnergy.Sources.Domain.Entities.Source", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("CO2Emissions")
@@ -67,7 +69,6 @@ namespace AlternativeEnergy.Sources.Infrastructure.Migrations
             modelBuilder.Entity("AlternativeEnergy.Sources.Domain.Entities.UserEnergyChoice", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("Consumption")

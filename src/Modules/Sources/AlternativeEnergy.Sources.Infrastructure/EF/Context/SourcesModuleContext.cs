@@ -17,9 +17,9 @@ namespace AlternativeEnergy.Sources.Infrastructure.EF.Context
         {
             modelBuilder.HasDefaultSchema(DbSchemas.Sources);
 
+            modelBuilder.ApplyConfiguration(new RegionMap());
             modelBuilder.ApplyConfiguration(new SourceMap());
             modelBuilder.ApplyConfiguration(new UserEnergyChoiceMap());
-            modelBuilder.ApplyConfiguration(new RegionMap());
 
             base.OnModelCreating(modelBuilder);
         }
