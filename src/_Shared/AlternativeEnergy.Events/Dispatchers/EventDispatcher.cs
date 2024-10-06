@@ -11,7 +11,7 @@ namespace AlternativeEnergy.Events.Dispatchers
             _serviceProvider = serviceProvider;
         }
 
-        public async Task BroadcastToHandlerAsync<T>(T @event) where T : class, IEvent
+        public async Task InvokeEventHandler<T>(T @event) where T : class, IEvent
         {
             using var scope = _serviceProvider.CreateScope();
 

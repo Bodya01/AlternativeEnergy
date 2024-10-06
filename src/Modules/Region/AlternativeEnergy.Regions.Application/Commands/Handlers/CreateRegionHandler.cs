@@ -8,18 +8,18 @@ namespace AlternativeEnergy.Regions.Application.Commands.Handlers
     internal sealed class CreateRegionHandler : IRequestHandler<CreateRegion, Guid>
     {
         private readonly IRegionRepository _regionRepository;
-        private readonly IInMemoryMessageBus _eventBus;
+        private readonly IInMemoryMessageBus _messageBus;
 
         public CreateRegionHandler(IRegionRepository regionRepository, IInMemoryMessageBus eventBus)
         {
             _regionRepository = regionRepository;
-            _eventBus = eventBus;
+            _messageBus = eventBus;
         }
 
         public async Task<Guid> Handle(CreateRegion request, CancellationToken cancellationToken)
         {
             var regionId = await _regionRepository.CreateAsync(request.Name, cancellationToken);
-            await _eventBus.PublishAsync(new RegionCreatedEvent(regionId, request.Name));
+            await _messageBus.PublishAsync(new RegionCreatedEvent(regionId, request.Name));
 
             return regionId;
         }

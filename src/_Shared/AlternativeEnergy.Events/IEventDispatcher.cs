@@ -2,6 +2,6 @@
 {
     public interface IEventDispatcher
     {
-        Task BroadcastToHandlerAsync<T>(T @event) where T : class, IEvent;
+        Task InvokeEventHandler<T>(T @event) where T : class, IEvent;
     }
 }

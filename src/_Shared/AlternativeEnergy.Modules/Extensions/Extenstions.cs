@@ -38,7 +38,7 @@ namespace AlternativeEnergy.Modules.Extensions
 
                         // invoke event dispatcher
                         return (Task)dispatcher!.GetType()
-                            .GetMethod(nameof(dispatcher.BroadcastToHandlerAsync))!
+                            .GetMethod(nameof(dispatcher.InvokeEventHandler))!
                             .MakeGenericMethod(type) //set type of event listener object
                             .Invoke(dispatcher, [@event]);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
