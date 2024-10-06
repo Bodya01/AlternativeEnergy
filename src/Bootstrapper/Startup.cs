@@ -1,4 +1,5 @@
-﻿using AlternativeEnergy.Messaging.Extensions;
+﻿using AlternativeEnergy.Infrastructure;
+using AlternativeEnergy.Messaging.Extensions;
 using Bootstrapper.Extensions;
 using Bootstrapper.Middlewares;
 
@@ -13,28 +14,19 @@ namespace Bootstrapper
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var configs = services.AddApplicationConfigsObject(Configuration);
-
-            services.AddSwagger();
-
-            services.AddLogging(config =>
-            {
-                config.AddConsole();
-                config.AddDebug();
-            });
-
-            services.AddApplicationModules(configs);
-            services.AddInMemoryMessaging();
+            services
+                .AddSwagger()
+                .AddLogging()
+                .AddApplicationConfigsObject(Configuration, out ApplicationConfigs configs)
+                .AddApplicationModules(configs)
+                .AddInMemoryMessaging()
+                .AddHttpContextAccessor();
 
             services.AddMvc();
-
-            services.AddHttpContextAccessor();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             app.UseMiddleware<ExceptionHandlingMiddleware>();

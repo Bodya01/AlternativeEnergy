@@ -54,13 +54,13 @@ namespace Bootstrapper.Extensions
             return services;
         }
 
-        public static ApplicationConfigs AddApplicationConfigsObject(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddApplicationConfigsObject(this IServiceCollection services, IConfiguration configuration, out ApplicationConfigs configs)
         {
-            var configs = new ApplicationConfigs();
+            configs = new ApplicationConfigs();
             configuration.GetSection("ApplicationConfigurations").Bind(configs);
             services.AddSingleton(configs);
 
-            return configs;
+            return services;
         }
     }
 }
