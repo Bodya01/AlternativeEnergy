@@ -1,6 +1,8 @@
 ﻿using AlternativeEnergy.Events;
+using AlternativeEnergy.Sources.Application.Exceptions;
 using AlternativeEnergy.Sources.Domain.Entities;
 using AlternativeEnergy.Sources.Domain.Repositories;
+using System.Net;
 
 namespace AlternativeEnergy.Sources.Application.Events.External.Handlers
 {
@@ -13,7 +15,8 @@ namespace AlternativeEnergy.Sources.Application.Events.External.Handlers
 
         public async Task HandleAsync(RegionCreatedEvent @event, CancellationToken cancellationToken = default)
         {
-            if (await _regionRepository.ExistsAsync(@event.Id, cancellationToken)) throw new Exception("region exists"); //TODO: add an exception type
+            if (await _regionRepository.ExistsAsync(@event.Id, cancellationToken))
+                throw new RegionAlreadyExistsException(HttpStatusCode.BadRequest, $"Region with Id: {@event.Id} already exists");
 
             var region = new Region(@event.Id, @event.Name);
             await _regionRepository.CreateAsync(region, cancellationToken);
