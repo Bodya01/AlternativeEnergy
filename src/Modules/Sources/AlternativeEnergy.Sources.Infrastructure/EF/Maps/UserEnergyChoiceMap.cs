@@ -9,7 +9,7 @@ namespace AlternativeEnergy.Sources.Infrastructure.EF.Maps
         public void Configure(EntityTypeBuilder<UserEnergyChoice> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.Id).ValueGeneratedNever();
 
             builder.Property(x => x.Consumption).IsRequired();
             builder.Property(x => x.ConsumptionDate).IsRequired();

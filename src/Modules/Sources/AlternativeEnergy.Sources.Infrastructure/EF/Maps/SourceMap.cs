@@ -10,7 +10,7 @@ namespace AlternativeEnergy.Sources.Infrastructure.EF.Maps
         public void Configure(EntityTypeBuilder<Source> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.Id).ValueGeneratedNever();
 
             builder.Property(x => x.Name).IsRequired();
 

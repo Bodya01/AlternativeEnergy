@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.Messaging\AlternativeEnergy.Messaging.csproj" />
     <ProjectReference Include="..\AlternativeEnergy.Sources.Domain\AlternativeEnergy.Sources.Domain.csproj" />
     <ProjectReference Include="..\AlternativeEnergy.Sources.Infrastructure\AlternativeEnergy.Sources.Infrastructure.csproj" />
   </ItemGroup>

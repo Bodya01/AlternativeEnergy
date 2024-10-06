@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.Messaging\AlternativeEnergy.Messaging.csproj" />
     <ProjectReference Include="..\AlternativeEnergy.Regions.Domain\AlternativeEnergy.Regions.Domain.csproj" />
   </ItemGroup>
 

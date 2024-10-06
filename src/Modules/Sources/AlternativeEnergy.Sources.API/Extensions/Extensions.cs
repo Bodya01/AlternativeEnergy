@@ -14,7 +14,8 @@ namespace AlternativeEnergy.Sources.API.Extensions
         {
             services.AddSourcesContext(configs)
                 .AddSourcesRepositories()
-                .AddSourcesHandlers();
+                .AddSourcesHandlers()
+                .AddSourcesEventHandlers();
 
             return services;
         }
