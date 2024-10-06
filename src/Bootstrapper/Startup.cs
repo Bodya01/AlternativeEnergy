@@ -1,4 +1,5 @@
-﻿using Bootstrapper.Extensions;
+﻿using AlternativeEnergy.Messaging.Extensions;
+using Bootstrapper.Extensions;
 using Bootstrapper.Middlewares;
 
 namespace Bootstrapper
@@ -26,6 +27,7 @@ namespace Bootstrapper
             });
 
             services.AddApplicationModules(configs);
+            services.AddInMemoryMessaging();
 
             services.AddMvc();
 
