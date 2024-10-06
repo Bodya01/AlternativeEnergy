@@ -27,6 +27,8 @@ namespace AlternativeEnergy.Identity.API.Extensions
 
         public static IServiceCollection AddIdentityApi(this IServiceCollection services, ApplicationConfigs configs)
         {
+            services.AddSingleton(GetValidationParameters(configs));
+
             services
                 .RegisterDbContext(configs)
                 .RegisterIdentity()
@@ -36,7 +38,6 @@ namespace AlternativeEnergy.Identity.API.Extensions
                 .AddIdentityApplicationServices()
                 .AddIdentityCommandHandlers();
 
-            services.AddSingleton(GetValidationParameters(configs));
 
             return services;
         }
