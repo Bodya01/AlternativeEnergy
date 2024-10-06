@@ -1,6 +1,5 @@
 ﻿using AlternativeEnergy.Identity.Domain.Entities;
 using AlternativeEnergy.Identity.Infrastructure.EF.DbModels;
-using Mapster;
 
 namespace AlternativeEnergy.Identity.Infrastructure.Extensions
 {

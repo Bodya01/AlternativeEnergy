@@ -17,7 +17,7 @@ namespace AlternativeEnergy.Regions.API.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAll(CancellationToken cancellationToken) => 
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken) =>
             Ok(await _mediator.Send(new GetAllRegions(), cancellationToken));
 
         [HttpGet("{id}")]

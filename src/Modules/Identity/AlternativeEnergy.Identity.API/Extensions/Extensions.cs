@@ -3,7 +3,6 @@ using AlternativeEnergy.Identity.Infrastructure.EF.DbModels;
 using AlternativeEnergy.Identity.Infrastructure.Extensions;
 using AlternativeEnergy.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;

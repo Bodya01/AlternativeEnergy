@@ -1,7 +1,6 @@
 ﻿using AlternativeEnergy.Events;
 using AlternativeEnergy.Sources.Domain.Entities;
 using AlternativeEnergy.Sources.Domain.Repositories;
-using MediatR;
 
 namespace AlternativeEnergy.Sources.Application.Events.External.Handlers
 {
