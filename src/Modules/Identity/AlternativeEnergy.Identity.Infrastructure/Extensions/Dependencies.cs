@@ -22,6 +22,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.Extensions
         public static IServiceCollection RegisterRepositories(this IServiceCollection services)
         {
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
@@ -30,6 +31,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.Extensions
         {
             services.AddIdentity<AppUser, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<IdentityModuleContext>()
+                .AddUserManager<UserManager<AppUser>>()
                 .AddDefaultTokenProviders();
 
             return services;

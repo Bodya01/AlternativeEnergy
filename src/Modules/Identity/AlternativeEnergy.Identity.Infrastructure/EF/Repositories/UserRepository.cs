@@ -11,9 +11,9 @@ namespace AlternativeEnergy.Identity.Infrastructure.EF.Repositories
     internal sealed class UserRepository : IUserRepository
     {
         private readonly IdentityModuleContext _context;
-        private readonly Lazy<UserManager<AppUser>> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public UserRepository(IdentityModuleContext context, Lazy<UserManager<AppUser>> userManager)
+        public UserRepository(IdentityModuleContext context, UserManager<AppUser> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -31,7 +31,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.EF.Repositories
         {
             var entity = user.AsDbObject();
 
-            await _userManager.Value.CreateAsync(entity);
+            await _userManager.CreateAsync(entity);
 
             return entity.Id;
         }
@@ -46,7 +46,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.EF.Repositories
         {
             var user = await GetByIdAsync(id, cancellationToken);
 
-            await _userManager.Value.DeleteAsync(user.AsDbObject());
+            await _userManager.DeleteAsync(user.AsDbObject());
         }
 
         public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default)
@@ -55,7 +55,7 @@ namespace AlternativeEnergy.Identity.Infrastructure.EF.Repositories
         public async Task<bool> ValidatePassword(Guid id, string password, CancellationToken cancellationToken = default)
         {
             var user = await GetByIdAsync(id, cancellationToken);
-            return await _userManager.Value.CheckPasswordAsync(user.AsDbObject(), password);
+            return await _userManager.CheckPasswordAsync(user.AsDbObject(), password);
         }
     }
 }
