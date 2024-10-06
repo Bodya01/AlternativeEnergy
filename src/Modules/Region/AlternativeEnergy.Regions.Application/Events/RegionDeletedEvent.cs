@@ -2,7 +2,5 @@
 
 namespace AlternativeEnergy.Regions.Application.Events
 {
-    public sealed class RegionDeletedEvent : IIntegrationEvent
-    {
-    }
+    internal sealed record RegionDeletedEvent(Guid Id) : IIntegrationEvent;
 }

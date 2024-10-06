@@ -18,7 +18,7 @@ namespace AlternativeEnergy.Regions.Domain.Entities
         public static Region Create(Guid id, string name)
         {
             var region = new Region(id, name);
-            region.AddEvent(new RegionCreatedEvent());
+            region.AddEvent(new RegionCreatedDomainEvent());
 
             return region;
         }
@@ -27,7 +27,7 @@ namespace AlternativeEnergy.Regions.Domain.Entities
         {
             if (string.IsNullOrWhiteSpace(name)) throw new RegionNameIsEmptyException("Region name cannot be empty.");
 
-            AddEvent(new RegionUpdatedEvent());
+            AddEvent(new RegionUpdatedDomainEvent());
 
             Name = name;
         }

@@ -2,5 +2,5 @@
 
 namespace AlternativeEnergy.Regions.Domain.Events
 {
-    internal sealed record RegionUpdatedEvent : IDomainEvent;
+    internal sealed record RegionCreatedDomainEvent : IDomainEvent;
 }
