@@ -33,7 +33,8 @@ namespace AlternativeEnergy.Identity.API.Extensions
                 .ConfigureAuthentication(configs)
                 //.AddDuendeIdentityServer(configs) //should go after identity registration
                 .RegisterRepositories()
-                .RegisterApplicationServices();
+                .AddIdentityApplicationServices()
+                .AddIdentityCommandHandlers();
 
             services.AddSingleton(GetValidationParameters(configs));
 

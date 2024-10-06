@@ -17,8 +17,4 @@
     <ProjectReference Include="..\AlternativeEnergy.Identity.Domain\AlternativeEnergy.Identity.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
 </Project>
