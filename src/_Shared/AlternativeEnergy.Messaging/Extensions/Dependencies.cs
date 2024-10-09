@@ -8,9 +8,10 @@ namespace AlternativeEnergy.Messaging.Extensions
     {
         public static IServiceCollection AddInMemoryMessaging(this IServiceCollection services)
         {
-            services.AddModuleBroadcasting()
-                .AddInMemoryEventDispatcher();
-            services.AddTransient<IInMemoryMessageBus, InMemoryMessageBus>();
+            services
+                .AddModuleBroadcasting()
+                .AddInMemoryEventDispatcher()
+                .AddTransient<IInMemoryMessageBus, InMemoryMessageBus>();
 
             return services;
         }

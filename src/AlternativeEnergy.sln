@@ -8,11 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Bootstrap
 		{20C43146-6DF8-425A-A3C0-5F009718CA31} = {20C43146-6DF8-425A-A3C0-5F009718CA31}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Domain", "_Shared\AlternativeEnergy.Domain\AlternativeEnergy.Domain.csproj", "{B868136F-9C2B-490D-8D5A-17835B45D011}"
-	ProjectSection(ProjectDependencies) = postProject
-		{55E1CE90-B728-4455-8320-E916A2F70A87} = {55E1CE90-B728-4455-8320-E916A2F70A87}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Infrastructure", "_Shared\AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj", "{8CC3F195-44D2-454F-9185-D929F7056884}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{25C0C9AD-2D55-4A28-9305-AC205FAAB659}"
@@ -80,7 +75,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Messaging
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Modules", "_Shared\AlternativeEnergy.Modules\AlternativeEnergy.Modules.csproj", "{C8F7184B-7BF6-449D-A7D2-D5F0D189A8E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Events", "_Shared\AlternativeEnergy.Events\AlternativeEnergy.Events.csproj", "{294A5396-196B-4242-B5DD-36B3A56753C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Events", "_Shared\AlternativeEnergy.Events\AlternativeEnergy.Events.csproj", "{294A5396-196B-4242-B5DD-36B3A56753C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Footprints", "Footprints", "{080AFFC9-F4B3-4BB5-9997-C7F5BDA265C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Footprints.Domain", "Modules\Footprints\AlternativeEnergy.Footprints.Domain\AlternativeEnergy.Footprints.Domain.csproj", "{EEC1B6A3-FE1F-43FD-9839-4363E8631DDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pollutants", "Pollutants", "{108C2F80-B85C-4261-B104-EFEE96251B0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Pollutants.Domain", "Modules\Pollutants\AlternativeEnergy.Pollutants.Domain\AlternativeEnergy.Pollutants.Domain.csproj", "{96AA8993-C04B-4408-8916-A2CE5B96D7B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,10 +95,6 @@ Global
 		{627F7112-A94E-4C78-85D5-85F47B5D09A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{627F7112-A94E-4C78-85D5-85F47B5D09A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{627F7112-A94E-4C78-85D5-85F47B5D09A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B868136F-9C2B-490D-8D5A-17835B45D011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B868136F-9C2B-490D-8D5A-17835B45D011}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B868136F-9C2B-490D-8D5A-17835B45D011}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B868136F-9C2B-490D-8D5A-17835B45D011}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CC3F195-44D2-454F-9185-D929F7056884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CC3F195-44D2-454F-9185-D929F7056884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CC3F195-44D2-454F-9185-D929F7056884}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -164,12 +163,19 @@ Global
 		{294A5396-196B-4242-B5DD-36B3A56753C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{294A5396-196B-4242-B5DD-36B3A56753C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{294A5396-196B-4242-B5DD-36B3A56753C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC1B6A3-FE1F-43FD-9839-4363E8631DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC1B6A3-FE1F-43FD-9839-4363E8631DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC1B6A3-FE1F-43FD-9839-4363E8631DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC1B6A3-FE1F-43FD-9839-4363E8631DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96AA8993-C04B-4408-8916-A2CE5B96D7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AA8993-C04B-4408-8916-A2CE5B96D7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AA8993-C04B-4408-8916-A2CE5B96D7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AA8993-C04B-4408-8916-A2CE5B96D7B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B868136F-9C2B-490D-8D5A-17835B45D011} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
 		{8CC3F195-44D2-454F-9185-D929F7056884} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
 		{6330B6D8-346E-46EE-B27D-C6270293929D} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
 		{5823504E-63F8-4E61-B308-AA328C3D5DB7} = {25C0C9AD-2D55-4A28-9305-AC205FAAB659}
@@ -187,6 +193,8 @@ Global
 		{F4709792-D302-4C2A-9E05-CD5AF9D5BBFC} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
 		{C8F7184B-7BF6-449D-A7D2-D5F0D189A8E5} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
 		{294A5396-196B-4242-B5DD-36B3A56753C7} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
+		{EEC1B6A3-FE1F-43FD-9839-4363E8631DDD} = {080AFFC9-F4B3-4BB5-9997-C7F5BDA265C5}
+		{96AA8993-C04B-4408-8916-A2CE5B96D7B9} = {108C2F80-B85C-4261-B104-EFEE96251B0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDB8793A-0801-4503-B2DC-A7FCA6FF6D11}
