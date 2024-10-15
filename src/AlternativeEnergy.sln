@@ -84,6 +84,19 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pollutants", "Pollutants", "{108C2F80-B85C-4261-B104-EFEE96251B0A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlternativeEnergy.Pollutants.Domain", "Modules\Pollutants\AlternativeEnergy.Pollutants.Domain\AlternativeEnergy.Pollutants.Domain.csproj", "{96AA8993-C04B-4408-8916-A2CE5B96D7B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{294A5396-196B-4242-B5DD-36B3A56753C7} = {294A5396-196B-4242-B5DD-36B3A56753C7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Pollutants.Infrastructure", "Modules\Pollutants\AlternativeEnergy.Pollutants.Infrastructure\AlternativeEnergy.Pollutants.Infrastructure.csproj", "{1D888887-92F2-4ED3-A0C7-303B3018D2B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Pollutants.Application", "Modules\Pollutants\AlternativeEnergy.Pollutants.Application\AlternativeEnergy.Pollutants.Application.csproj", "{885511A3-7055-4540-AF1D-B70B64CE8836}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternativeEnergy.Pollutants.API", "Modules\Pollutants\AlternativeEnergy.Pollutants.API\AlternativeEnergy.Pollutants.API.csproj", "{851F8682-B77D-4CA7-841D-172DC068ECF0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D888887-92F2-4ED3-A0C7-303B3018D2B3} = {1D888887-92F2-4ED3-A0C7-303B3018D2B3}
+		{885511A3-7055-4540-AF1D-B70B64CE8836} = {885511A3-7055-4540-AF1D-B70B64CE8836}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +184,18 @@ Global
 		{96AA8993-C04B-4408-8916-A2CE5B96D7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96AA8993-C04B-4408-8916-A2CE5B96D7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96AA8993-C04B-4408-8916-A2CE5B96D7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D888887-92F2-4ED3-A0C7-303B3018D2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D888887-92F2-4ED3-A0C7-303B3018D2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D888887-92F2-4ED3-A0C7-303B3018D2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D888887-92F2-4ED3-A0C7-303B3018D2B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885511A3-7055-4540-AF1D-B70B64CE8836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885511A3-7055-4540-AF1D-B70B64CE8836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885511A3-7055-4540-AF1D-B70B64CE8836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885511A3-7055-4540-AF1D-B70B64CE8836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{851F8682-B77D-4CA7-841D-172DC068ECF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{851F8682-B77D-4CA7-841D-172DC068ECF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{851F8682-B77D-4CA7-841D-172DC068ECF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{851F8682-B77D-4CA7-841D-172DC068ECF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -195,6 +220,9 @@ Global
 		{294A5396-196B-4242-B5DD-36B3A56753C7} = {C1EAA754-413D-4AE4-B157-FA43311FD8CB}
 		{EEC1B6A3-FE1F-43FD-9839-4363E8631DDD} = {080AFFC9-F4B3-4BB5-9997-C7F5BDA265C5}
 		{96AA8993-C04B-4408-8916-A2CE5B96D7B9} = {108C2F80-B85C-4261-B104-EFEE96251B0A}
+		{1D888887-92F2-4ED3-A0C7-303B3018D2B3} = {108C2F80-B85C-4261-B104-EFEE96251B0A}
+		{885511A3-7055-4540-AF1D-B70B64CE8836} = {108C2F80-B85C-4261-B104-EFEE96251B0A}
+		{851F8682-B77D-4CA7-841D-172DC068ECF0} = {108C2F80-B85C-4261-B104-EFEE96251B0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDB8793A-0801-4503-B2DC-A7FCA6FF6D11}

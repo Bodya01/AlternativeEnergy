@@ -20,6 +20,7 @@
     <ProjectReference Include="..\Modules\Identity\AlternativeEnergy.Identity.API\AlternativeEnergy.Identity.API.csproj" />
     <ProjectReference Include="..\Modules\Region\AlternativeEnergy.Regions.API\AlternativeEnergy.Regions.API.csproj" />
     <ProjectReference Include="..\Modules\Sources\AlternativeEnergy.Sources.API\AlternativeEnergy.Sources.API.csproj" />
+    <ProjectReference Include="..\Modules\Pollutants\AlternativeEnergy.Pollutants.API\AlternativeEnergy.Pollutants.API.csproj" />
   </ItemGroup>
 
 </Project>

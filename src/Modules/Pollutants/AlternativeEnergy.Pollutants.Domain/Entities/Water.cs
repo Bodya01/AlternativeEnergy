@@ -12,5 +12,7 @@ namespace AlternativeEnergy.Pollutants.Domain.Entities
 
         public Guid UserId { get; set; }
         public Guid RegionId { get; set; }
+
+        public Region Region { get; set; } = null!;
     }
 }

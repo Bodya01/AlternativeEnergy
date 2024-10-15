@@ -2,7 +2,7 @@
 
 namespace AlternativeEnergy.Pollutants.Domain.Entities
 {
-    public sealed class TransportUsage : Entity
+    public sealed class TransportEmission : Entity
     {
         public float ConsumedFuel { get; set; }
         public float Distance { get; set; }
@@ -11,5 +11,7 @@ namespace AlternativeEnergy.Pollutants.Domain.Entities
 
         public Guid UserId { get; set; }
         public Guid TransportId { get; set; }
+
+        public Transport Transport { get; set; }
     }
 }

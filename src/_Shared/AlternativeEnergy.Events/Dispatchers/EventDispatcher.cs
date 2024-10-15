@@ -7,9 +7,7 @@ namespace AlternativeEnergy.Events.Dispatchers
         private readonly IServiceProvider _serviceProvider;
 
         public EventDispatcher(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
+            => _serviceProvider = serviceProvider;
 
         public async Task InvokeEventHandler<T>(T @event) where T : class, IEvent
         {
@@ -17,10 +15,7 @@ namespace AlternativeEnergy.Events.Dispatchers
 
             var handlers = scope.ServiceProvider.GetServices<IEventHandler<T>>();
 
-            foreach (var handler in handlers)
-            {
-                await handler.HandleAsync(@event);
-            }
+            foreach (var handler in handlers) await handler.HandleAsync(@event);
         }
     }
 }

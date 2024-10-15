@@ -1,6 +1,4 @@
-using Bootstrapper;
-
-namespace AlternativeEnergy.Bootstrapper
+namespace AlternativeEnergy.Pollutants.API
 {
     public class Program
     {
@@ -11,9 +9,6 @@ namespace AlternativeEnergy.Bootstrapper
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                .ConfigureWebHostDefaults(webBuilder => { });
     }
 }
