@@ -13,9 +13,6 @@ namespace AlternativeEnergy.Sources.Domain.Entities
             Name = name;
         }
 
-        public void Update(string name)
-        {
-            Name = name;
-        }
+        public void Update(string name) => Name = name;
     }
 }

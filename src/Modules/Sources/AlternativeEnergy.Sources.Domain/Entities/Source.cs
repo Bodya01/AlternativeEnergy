@@ -11,7 +11,7 @@ namespace AlternativeEnergy.Sources.Domain.Entities
         public EnergyTypes EnergyType { get; private set; }
         public float CO2Emissions { get; private set; } //general co2 emissions per energy unit (gramm/kW-h) does not depend on regional data for energy source
 
-        public ICollection<UserEnergyChoice> EnergyChoices { get; set; }
+        public ICollection<UserEnergyChoice> EnergyChoices { get; set; } = null!;
 
         private Source(Guid id, string name, string description, EnergyTypes energyType, float cO2Emissions) : base(id)
         {
