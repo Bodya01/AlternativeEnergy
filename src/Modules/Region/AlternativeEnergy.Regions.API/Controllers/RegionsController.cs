@@ -1,20 +1,20 @@
 using AlternativeEnergy.Regions.Application.Commands;
 using AlternativeEnergy.Regions.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlternativeEnergy.Regions.API.Controllers
 {
     [ApiController]
+    [AllowAnonymous]
     [Route("api/regions")]
     public sealed class RegionsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
         public RegionsController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+            => _mediator = mediator;
 
         [HttpGet("all")]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken) =>

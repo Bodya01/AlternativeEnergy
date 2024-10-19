@@ -10,9 +10,7 @@ namespace AlternativeEnergy.Regions.Infrastructure.EF.Repositories
         private readonly RegionsModuleContext _context;
 
         public RegionRepository(RegionsModuleContext context)
-        {
-            _context = context;
-        }
+            => _context = context;
 
         public async Task<IQueryable<Region>> GetQueryAsync(CancellationToken cancellationToken = default) =>
             await Task.Run(() => _context.Regions, cancellationToken);
@@ -50,5 +48,11 @@ namespace AlternativeEnergy.Regions.Infrastructure.EF.Repositories
             await Task.Run(() => _context.Remove(entity), cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
         }
+
+        public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default)
+            => (await GetByIdAsync(id, cancellationToken)) != null;
+
+        public async Task<bool> ExistsAsync(string name, CancellationToken cancellationToken = default)
+            => (await _context.Regions.FirstOrDefaultAsync(x => x.Name == name, cancellationToken)) != null;
     }
 }

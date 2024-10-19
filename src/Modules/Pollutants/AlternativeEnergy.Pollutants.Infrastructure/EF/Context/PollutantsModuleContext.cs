@@ -13,6 +13,7 @@ namespace AlternativeEnergy.Pollutants.Infrastructure.EF.Context
         public DbSet<TransportEmission> TransportEmissions { get; set; }
         public DbSet<Waste> Wastes { get; set; }
         public DbSet<Water> WaterEmissions { get; set; }
+        public DbSet<Source> Sources { get; set; }
 
         public PollutantsModuleContext(DbContextOptions<PollutantsModuleContext> options) : base(options) { }
 

@@ -6,7 +6,7 @@ using AlternativeEnergy.Sources.API.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 
-namespace Bootstrapper.Extensions
+namespace AlternativeEnergy.Bootstrapper.Extensions
 {
     internal static class Dependencies
     {
@@ -63,6 +63,21 @@ namespace Bootstrapper.Extensions
             configs = new ApplicationConfigs();
             configuration.GetSection("ApplicationConfigurations").Bind(configs);
             services.AddSingleton(configs);
+
+            return services;
+        }
+
+        public static IServiceCollection AddAlternativeEnergyCORSPolicy(this IServiceCollection services)
+        {
+            services.AddCors(o =>
+            {
+                o.AddPolicy("AlternativeEnergyPolicy", p =>
+                {
+                    p.WithOrigins("http://localhost:3000");
+                    p.AllowAnyHeader();
+                    p.AllowAnyMethod();
+                });
+            });
 
             return services;
         }

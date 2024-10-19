@@ -1,6 +1,6 @@
-﻿using AlternativeEnergy.Infrastructure;
+﻿using AlternativeEnergy.Bootstrapper.Extensions;
+using AlternativeEnergy.Infrastructure;
 using AlternativeEnergy.Messaging.Extensions;
-using Bootstrapper.Extensions;
 using Bootstrapper.Middlewares;
 
 namespace Bootstrapper
@@ -22,7 +22,8 @@ namespace Bootstrapper
                 .AddApplicationConfigsObject(Configuration, out ApplicationConfigs configs)
                 .AddApplicationModules(configs)
                 .AddInMemoryMessaging()
-                .AddHttpContextAccessor();
+                .AddHttpContextAccessor()
+                .AddAlternativeEnergyCORSPolicy();
 
             services.AddMvc();
         }
@@ -51,6 +52,8 @@ namespace Bootstrapper
             });
 
             app.UseRouting();
+
+            app.UseCors("AlternativeEnergyPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();

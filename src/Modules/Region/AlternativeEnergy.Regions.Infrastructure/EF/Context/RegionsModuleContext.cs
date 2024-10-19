@@ -8,7 +8,7 @@ namespace AlternativeEnergy.Regions.Infrastructure.EF.Context
     internal sealed class RegionsModuleContext : DbContext
     {
         public DbSet<Region> Regions { get; set; }
-        public RegionsModuleContext(DbContextOptions options) : base(options)
+        public RegionsModuleContext(DbContextOptions<RegionsModuleContext> options) : base(options)
         {
         }
 

@@ -1,4 +1,6 @@
-﻿namespace AlternativeEnergy.Regions.Application.Events
+﻿using AlternativeEnergy.Events.DDD;
+
+namespace AlternativeEnergy.Regions.Application.Events
 {
-    internal sealed record RegionDeletedEvent(Guid Id);// : IEvent;
+    internal sealed record RegionDeletedEvent(Guid Id) : IIntegrationEvent;
 }

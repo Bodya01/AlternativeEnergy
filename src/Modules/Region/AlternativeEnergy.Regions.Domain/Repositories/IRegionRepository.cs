@@ -10,5 +10,7 @@ namespace AlternativeEnergy.Regions.Domain.Repositories
         Task<Guid> CreateAsync(string name, CancellationToken cancellationToken = default);
         Task UpdateAsync(Guid id, string name, CancellationToken cancellationToken = default);
         Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<bool> ExistsAsync(string name, CancellationToken cancellationToken = default);
     }
 }

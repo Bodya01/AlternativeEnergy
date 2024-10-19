@@ -14,6 +14,7 @@ namespace AlternativeEnergy.Regions.Infrastructure.EF.Maps
             builder.Property(x => x.Id).ValueGeneratedNever().IsRequired();
 
             builder.Property(x => x.Name).IsRequired().HasMaxLength(30);
+            builder.HasIndex(x => x.Name).IsUnique();
 
             builder.Ignore(x => x.Events)
                 .Ignore(x => x.Version);

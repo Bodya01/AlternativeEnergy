@@ -18,6 +18,7 @@ namespace AlternativeEnergy.Pollutants.API.Extentions
             services
                 .AddPollutantsDbContext(configs)
                 .AddPollutantRepositories()
+                .AddPollutantHandlers()
                 .AddPollutantEventHandlers();
 
             return services;
