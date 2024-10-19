@@ -4,16 +4,19 @@ using AlternativeEnergy.Sources.Infrastructure.EF.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AlternativeEnergy.Sources.Infrastructure.Migrations
+namespace AlternativeEnergy.Sources.Infrastructure.EF.Migrations
 {
     [DbContext(typeof(SourcesModuleContext))]
-    partial class SourcesModuleContextModelSnapshot : ModelSnapshot
+    [Migration("20241019225054_RenamedRegionTable")]
+    partial class RenamedRegionTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

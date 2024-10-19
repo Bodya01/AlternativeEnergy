@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <Content Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+    <_WebToolingArtifacts Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\AlternativeEnergy.Footprints.Application\AlternativeEnergy.Footprints.Application.csproj" />
+    <ProjectReference Include="..\AlternativeEnergy.Footprints.Infrastructure\AlternativeEnergy.Footprints.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

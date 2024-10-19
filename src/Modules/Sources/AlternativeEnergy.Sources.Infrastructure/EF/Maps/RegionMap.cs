@@ -8,7 +8,7 @@ namespace AlternativeEnergy.Sources.Infrastructure.EF.Maps
     {
         public void Configure(EntityTypeBuilder<Region> builder)
         {
-            builder.ToTable("Region");
+            builder.ToTable("Regions");
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedNever();
