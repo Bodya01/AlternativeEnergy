@@ -23,6 +23,6 @@ namespace AlternativeEnergy.Sources.API.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateSource command, CancellationToken cancellationToken)
-            => Ok(await _sender.PublishAsync<CreateSource, Guid>(command, cancellationToken));
+            => Ok(await _sender.SendAsync(command, cancellationToken));
     }
 }

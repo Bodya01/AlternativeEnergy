@@ -19,27 +19,27 @@ namespace AlternativeEnergy.Regions.API.Controllers
 
         [HttpGet("all")]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken) =>
-            Ok(await _sender.PublishAsync<GetAllRegions, IEnumerable<RegionDto>>(new GetAllRegions(), cancellationToken));
+            Ok(await _sender.SendAsync(new GetAllRegions(), cancellationToken));
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken) =>
-            Ok(await _sender.PublishAsync<GetRegion, RegionDto>(new GetRegion(id), cancellationToken));
+            Ok(await _sender.SendAsync(new GetRegion(id), cancellationToken));
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateRegion command, CancellationToken cancellationToken) =>
-            Ok(await _sender.PublishAsync<CreateRegion, Guid>(command, cancellationToken));
+            Ok(await _sender.SendAsync(command, cancellationToken));
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateRegion command, CancellationToken cancellationToken)
         {
-            await _sender.PublishAsync(command, cancellationToken);
+            await _sender.SendAsync(command, cancellationToken);
             return Ok();
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] DeleteRegion command, CancellationToken cancellationToken)
         {
-            await _sender.PublishAsync(command, cancellationToken);
+            await _sender.SendAsync(command, cancellationToken);
             return Ok();
         }
 

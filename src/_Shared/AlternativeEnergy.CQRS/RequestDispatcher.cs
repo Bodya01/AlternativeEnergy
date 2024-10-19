@@ -10,7 +10,7 @@ namespace AlternativeEnergy.CQRS
         public RequestDispatcher(IServiceProvider serviceProvider)
             => _serviceProvider = serviceProvider;
 
-        public async Task PublishAsync<T>(T request, CancellationToken cancellationToken = default) where T : IRequest
+        public async Task SendAsync<T>(T request, CancellationToken cancellationToken = default) where T : IRequest
         {
             using var scope = _serviceProvider.CreateScope();
 
@@ -19,17 +19,20 @@ namespace AlternativeEnergy.CQRS
             foreach (var handler in handlers) await handler.Handle(request, cancellationToken);
         }
 
-        public async Task<TResponse> PublishAsync<TRequest, TResponse>(TRequest request, CancellationToken cancellationToken = default) where TRequest : IRequest<TResponse>
+        public async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             using var scope = _serviceProvider.CreateScope();
 
-            var handler = scope.ServiceProvider.GetService<IRequestHandler<TRequest, TResponse>>();
+            var handlerType = typeof(IRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
 
-            if (handler is null) throw new HandlerNotRegisteredException($"Handler for type: {typeof(TRequest).Name} is not registered.");
+            var handler = _serviceProvider.GetService(handlerType);
 
-            TResponse result = await handler.Handle(request, cancellationToken);
+            if (handler is null) throw new HandlerNotRegisteredException($"Handler for type: {request.GetType().Name} is not registered.");
 
-            return result;
+            var handleMethod = handlerType.GetMethod("Handle");
+            var resultTask = handleMethod!.Invoke(handler, [request, cancellationToken]) as Task<TResponse>;
+
+            return await resultTask;
         }
     }
 }

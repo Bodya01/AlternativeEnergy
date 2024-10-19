@@ -13,23 +13,20 @@ namespace AlternativeEnergy.Identity.API.Controllers
         //private readonly UserManager<AppUser> _userManager;
         private readonly ISender _sender;
 
-        public IdentityController(ISender mediator/*, UserManager<AppUser> userManager*/) : base()
-        {
-            _sender = mediator;
-            //_userManager = userManager;
-        }
+        public IdentityController(ISender sender/*, UserManager<AppUser> userManager*/) : base()
+            => _sender = sender;
 
         [HttpPost("sign-in")]
         public async Task<IActionResult> Login([FromBody] LoginUser model, CancellationToken cancellationToken) =>
-            Ok(await _sender.PublishAsync<LoginUser, AuthenticationResult>(model, cancellationToken));
+            Ok(await _sender.SendAsync(model, cancellationToken));
 
         [HttpPost("sign-up")]
         public async Task<IActionResult> Register([FromBody] RegistrationModel model, CancellationToken cancellationToken) =>
-            Ok(await _sender.PublishAsync<RegistrationModel, AuthenticationResult>(model, cancellationToken));
+            Ok(await _sender.SendAsync(model, cancellationToken));
 
         [HttpPost("refresh")]
         public async Task<IActionResult> Refresh([FromBody] RefreshAccessToken model, CancellationToken cancellationToken) =>
-            Ok(await _sender.PublishAsync<RefreshAccessToken, AuthenticationResult>(model, cancellationToken));
+            Ok(await _sender.SendAsync(model, cancellationToken));
 
         //[HttpPost("register")]
         //public async Task<IActionResult> Register([FromBody] RegistrationModel model)

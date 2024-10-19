@@ -2,7 +2,7 @@
 {
     public interface ISender
     {
-        Task PublishAsync<TRequest>(TRequest request, CancellationToken cancellationToken = default) where TRequest : IRequest;
-        Task<TResponse> PublishAsync<TRequest, TResponse>(TRequest request, CancellationToken cancellationToken = default) where TRequest : IRequest<TResponse>;
+        Task SendAsync<TRequest>(TRequest request, CancellationToken cancellationToken = default) where TRequest : IRequest;
+        Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
     }
 }
