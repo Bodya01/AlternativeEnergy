@@ -1,5 +1,5 @@
-﻿using AlternativeEnergy.Identity.Application.Services;
-using MediatR;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Identity.Application.Services;
 using Microsoft.Extensions.Logging;
 
 namespace AlternativeEnergy.Identity.Application.Commands.Handlers

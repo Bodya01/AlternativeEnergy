@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using AlternativeEnergy.CQRS;
 
 namespace AlternativeEnergy.Identity.Application.Commands
 {

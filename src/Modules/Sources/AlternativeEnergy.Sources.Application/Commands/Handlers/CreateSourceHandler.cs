@@ -1,8 +1,8 @@
-﻿using AlternativeEnergy.Messaging;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Messaging;
 using AlternativeEnergy.Sources.Application.Events;
 using AlternativeEnergy.Sources.Domain.Entities;
 using AlternativeEnergy.Sources.Domain.Repositories;
-using MediatR;
 
 namespace AlternativeEnergy.Sources.Application.Commands.Handlers
 {

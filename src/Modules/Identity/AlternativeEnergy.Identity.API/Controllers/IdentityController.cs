@@ -1,5 +1,5 @@
-﻿using AlternativeEnergy.Identity.Application.Commands;
-using MediatR;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Identity.Application.Commands;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,25 +11,25 @@ namespace AlternativeEnergy.Identity.API.Controllers
     public sealed class IdentityController : ControllerBase
     {
         //private readonly UserManager<AppUser> _userManager;
-        private readonly IMediator _mediator;
+        private readonly ISender _sender;
 
-        public IdentityController(IMediator mediator/*, UserManager<AppUser> userManager*/) : base()
+        public IdentityController(ISender mediator/*, UserManager<AppUser> userManager*/) : base()
         {
-            _mediator = mediator;
+            _sender = mediator;
             //_userManager = userManager;
         }
 
         [HttpPost("sign-in")]
         public async Task<IActionResult> Login([FromBody] LoginUser model, CancellationToken cancellationToken) =>
-            Ok(await _mediator.Send(model, cancellationToken));
+            Ok(await _sender.PublishAsync<LoginUser, AuthenticationResult>(model, cancellationToken));
 
         [HttpPost("sign-up")]
         public async Task<IActionResult> Register([FromBody] RegistrationModel model, CancellationToken cancellationToken) =>
-            Ok(await _mediator.Send(model, cancellationToken));
+            Ok(await _sender.PublishAsync<RegistrationModel, AuthenticationResult>(model, cancellationToken));
 
         [HttpPost("refresh")]
         public async Task<IActionResult> Refresh([FromBody] RefreshAccessToken model, CancellationToken cancellationToken) =>
-            Ok(await _mediator.Send(model, cancellationToken));
+            Ok(await _sender.PublishAsync<RefreshAccessToken, AuthenticationResult>(model, cancellationToken));
 
         //[HttpPost("register")]
         //public async Task<IActionResult> Register([FromBody] RegistrationModel model)

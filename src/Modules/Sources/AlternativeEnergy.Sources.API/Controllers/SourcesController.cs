@@ -1,5 +1,5 @@
+using AlternativeEnergy.CQRS;
 using AlternativeEnergy.Sources.Application.Commands;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +10,10 @@ namespace AlternativeEnergy.Sources.API.Controllers
     [Route("api/sources")]
     public class SourcesController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly ISender _sender;
 
-        public SourcesController(IMediator mediator)
-            => _mediator = mediator;
+        public SourcesController(ISender mediator)
+            => _sender = mediator;
 
         [HttpGet("get/{userId:guid}")]
         public IActionResult Get(Guid userId)
@@ -23,6 +23,6 @@ namespace AlternativeEnergy.Sources.API.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateSource command, CancellationToken cancellationToken)
-            => Ok(await _mediator.Send(command, cancellationToken));
+            => Ok(await _sender.PublishAsync<CreateSource, Guid>(command, cancellationToken));
     }
 }

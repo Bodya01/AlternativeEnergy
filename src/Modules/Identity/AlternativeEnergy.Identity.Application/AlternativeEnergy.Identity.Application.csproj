@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.2" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.CQRS\AlternativeEnergy.CQRS.csproj" />
     <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.Infrastructure\AlternativeEnergy.Infrastructure.csproj" />
     <ProjectReference Include="..\AlternativeEnergy.Identity.Domain\AlternativeEnergy.Identity.Domain.csproj" />
   </ItemGroup>

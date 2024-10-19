@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using AlternativeEnergy.CQRS;
 
 namespace AlternativeEnergy.Regions.Application.Commands
 {

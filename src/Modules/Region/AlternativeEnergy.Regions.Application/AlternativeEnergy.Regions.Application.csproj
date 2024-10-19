@@ -8,10 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Mapster" Version="7.4.0" />
-    <PackageReference Include="MediatR" Version="12.4.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.CQRS\AlternativeEnergy.CQRS.csproj" />
     <ProjectReference Include="..\..\..\_Shared\AlternativeEnergy.Messaging\AlternativeEnergy.Messaging.csproj" />
     <ProjectReference Include="..\AlternativeEnergy.Regions.Domain\AlternativeEnergy.Regions.Domain.csproj" />
   </ItemGroup>

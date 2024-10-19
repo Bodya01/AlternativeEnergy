@@ -1,8 +1,8 @@
-﻿using AlternativeEnergy.Messaging;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Messaging;
 using AlternativeEnergy.Regions.Application.Events;
 using AlternativeEnergy.Regions.Application.Exceptions;
 using AlternativeEnergy.Regions.Domain.Repositories;
-using MediatR;
 using System.Net;
 
 namespace AlternativeEnergy.Regions.Application.Commands.Handlers

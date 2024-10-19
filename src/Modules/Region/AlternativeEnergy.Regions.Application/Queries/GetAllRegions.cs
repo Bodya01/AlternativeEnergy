@@ -1,5 +1,5 @@
-﻿using AlternativeEnergy.Regions.Application.Dtos;
-using MediatR;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Regions.Application.Dtos;
 
 namespace AlternativeEnergy.Regions.Application.Queries
 {

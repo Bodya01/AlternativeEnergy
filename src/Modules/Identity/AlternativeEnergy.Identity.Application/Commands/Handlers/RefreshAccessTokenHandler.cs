@@ -1,5 +1,5 @@
-﻿using AlternativeEnergy.Identity.Application.Services;
-using MediatR;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Identity.Application.Services;
 
 namespace AlternativeEnergy.Identity.Application.Commands.Handlers
 {
@@ -10,7 +10,7 @@ namespace AlternativeEnergy.Identity.Application.Commands.Handlers
         public RefreshAccessTokenHandler(IIdentityService identityService)
             => _identityService = identityService;
 
-        public Task<AuthenticationResult> Handle(RefreshAccessToken request, CancellationToken cancellationToken)
-            => _identityService.RefreshAsync(request, cancellationToken);
+        public async Task<AuthenticationResult> Handle(RefreshAccessToken request, CancellationToken cancellationToken)
+            => await _identityService.RefreshAsync(request, cancellationToken);
     }
 }

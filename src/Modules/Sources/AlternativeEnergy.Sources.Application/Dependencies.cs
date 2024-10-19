@@ -1,8 +1,8 @@
-﻿using AlternativeEnergy.Events;
+﻿using AlternativeEnergy.CQRS.Extensions;
+using AlternativeEnergy.Events;
 using AlternativeEnergy.Sources.Application.Events.External;
 using AlternativeEnergy.Sources.Application.Events.External.Handlers;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace AlternativeEnergy.Sources.Application
 {
@@ -10,10 +10,7 @@ namespace AlternativeEnergy.Sources.Application
     {
         public static IServiceCollection AddSourcesHandlers(this IServiceCollection services)
         {
-            services.AddMediatR(c =>
-            {
-                c.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            });
+            services.AddCQRSHandlersFromAssembly();
 
             return services;
         }
@@ -21,6 +18,8 @@ namespace AlternativeEnergy.Sources.Application
         public static IServiceCollection AddSourcesEventHandlers(this IServiceCollection services)
         {
             services.AddTransient<IEventHandler<RegionCreatedEvent>, RegionCreatedEventHandler>();
+            services.AddTransient<IEventHandler<RegionUpdatedEvent>, RegionUpdatedEventHandler>();
+            services.AddTransient<IEventHandler<RegionDeletedEvent>, RegionDeletedEventHandler>();
 
             return services;
         }

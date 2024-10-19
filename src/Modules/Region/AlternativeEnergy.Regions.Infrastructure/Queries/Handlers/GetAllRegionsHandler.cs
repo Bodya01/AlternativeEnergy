@@ -1,8 +1,8 @@
-﻿using AlternativeEnergy.Regions.Application.Dtos;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Regions.Application.Dtos;
 using AlternativeEnergy.Regions.Application.Queries;
 using AlternativeEnergy.Regions.Domain.Repositories;
 using Mapster;
-using MediatR;
 
 namespace AlternativeEnergy.Regions.Infrastructure.Queries.Handlers
 {

@@ -1,5 +1,5 @@
-﻿using AlternativeEnergy.Sources.Domain.Enums;
-using MediatR;
+﻿using AlternativeEnergy.CQRS;
+using AlternativeEnergy.Sources.Domain.Enums;
 
 namespace AlternativeEnergy.Sources.Application.Commands
 {

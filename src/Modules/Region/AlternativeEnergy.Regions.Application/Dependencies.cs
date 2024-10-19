@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+﻿using AlternativeEnergy.CQRS.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AlternativeEnergy.Regions.Application
 {
@@ -7,10 +7,7 @@ namespace AlternativeEnergy.Regions.Application
     {
         public static IServiceCollection AddRegionsCommandHandlers(this IServiceCollection services)
         {
-            services.AddMediatR(c =>
-            {
-                c.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            });
+            services.AddCQRSHandlersFromAssembly();
 
             return services;
         }

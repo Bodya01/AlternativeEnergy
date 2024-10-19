@@ -1,6 +1,6 @@
-﻿using AlternativeEnergy.Identity.Application.Services;
+﻿using AlternativeEnergy.CQRS.Extensions;
+using AlternativeEnergy.Identity.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace AlternativeEnergy.Identity.Application
 {
@@ -8,11 +8,7 @@ namespace AlternativeEnergy.Identity.Application
     {
         public static IServiceCollection AddIdentityCommandHandlers(this IServiceCollection services)
         {
-            services.AddMediatR(c =>
-            {
-                c.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            });
-
+            services.AddCQRSHandlersFromAssembly();
             return services;
         }
 

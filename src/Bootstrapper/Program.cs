@@ -1,5 +1,3 @@
-using Bootstrapper;
-
 namespace AlternativeEnergy.Bootstrapper
 {
     public class Program

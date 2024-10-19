@@ -1,4 +1,5 @@
-﻿using AlternativeEnergy.Infrastructure;
+﻿using AlternativeEnergy.CQRS.Extensions;
+using AlternativeEnergy.Infrastructure;
 using AlternativeEnergy.Regions.Domain.Repositories;
 using AlternativeEnergy.Regions.Infrastructure.EF.Context;
 using AlternativeEnergy.Regions.Infrastructure.EF.Repositories;
@@ -29,10 +30,7 @@ namespace AlternativeEnergy.Regions.Infrastructure
 
         public static IServiceCollection AddRegionsQueryHandlers(this IServiceCollection services)
         {
-            services.AddMediatR(o =>
-            {
-                o.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            });
+            services.AddCQRSHandlersFromAssembly();
 
             return services;
         }

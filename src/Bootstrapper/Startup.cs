@@ -1,9 +1,10 @@
 ﻿using AlternativeEnergy.Bootstrapper.Extensions;
+using AlternativeEnergy.CQRS.Extensions;
 using AlternativeEnergy.Infrastructure;
 using AlternativeEnergy.Messaging.Extensions;
 using Bootstrapper.Middlewares;
 
-namespace Bootstrapper
+namespace AlternativeEnergy.Bootstrapper
 {
     public class Startup
     {
@@ -20,6 +21,7 @@ namespace Bootstrapper
                 .AddSwagger()
                 .AddLogging()
                 .AddApplicationConfigsObject(Configuration, out ApplicationConfigs configs)
+                .AddCQRS()
                 .AddApplicationModules(configs)
                 .AddInMemoryMessaging()
                 .AddHttpContextAccessor()
